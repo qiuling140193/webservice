@@ -14,18 +14,8 @@ class CreateJadwalsTable extends Migration
     public function up()
     {
         Schema::create('jadwals', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('id_kelas')->unsigned();
-            $table->foreign('id_kelas')->references('id')->on('kelas');
-            $table->string('id_fakultas')->unsigned();
-            $table->foreign('id_fakultas')->references('id')->om('fakultas');
-            $table->integer('tahun');
-            $table->string('senin');
-            $table->string('selasa');
-            $table->string('rabu');
-            $table->string('kamis');
-            $table->string('jumat');
-            $table->string('sabtu');
+           $table->increments('id');
+            $table->string('bar');
             $table->timestamps();
         });
     }

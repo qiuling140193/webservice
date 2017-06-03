@@ -16,13 +16,13 @@ class CreateNilaisTable extends Migration
         Schema::create('nilais', function (Blueprint $table) {
             $table->increments('id');
             $table->string('semester');
-            $table->string('id_matkul')->unsigned();
+            $table->integer('id_matkul')->unsigned();
             $table->foreign('id_matkul')->references('id')->on('matakuliahs');
-            $table->double('absensi');
-            $table->double('tugas');
-            $table->double('uts');
-            $table->double('uas');
-            $table->double('grade');
+            $table->integer('absensi');
+            $table->integer('tugas');
+            $table->integer('uts');
+            $table->integer('uas');
+            $table->integer('grade');
             $table->timestamps();
         });
     }
