@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNilaisTable extends Migration
+class CreateKhsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateNilaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('khs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('semester');
-            $table->integer('id_matkul')->unsigned();
-            $table->foreign('id_matkul')->references('id')->on('matakuliahs');
             $table->integer('nim')->unsigned();
             $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->integer('id_matkul')->unsigned();
+            $table->foreign('id_matkul')->references('id')->on('matakuliahs');
             $table->integer('absensi');
             $table->integer('tugas');
             $table->integer('uts');
@@ -36,6 +35,6 @@ class CreateNilaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('khs');
     }
 }

@@ -36,6 +36,9 @@ class BarController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'bar'=>'required',
+            ]);
         $bar = new Bar();
         $bar->bar=$request->input('bar');
         $bar->save();
@@ -50,7 +53,8 @@ class BarController extends Controller
      */
     public function show($id)
     {
-        //
+        $bar = Bar::find($id);
+        return response()->json($bar->toArray());
     }
 
     /**
@@ -73,7 +77,10 @@ class BarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bar = Bar::find($id);
+        $bar->bar=$request->input('bar');
+        $bar->save();
+        return response()->json($bar->toArray());
     }
 
     /**
@@ -84,6 +91,8 @@ class BarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bar = Bar::find($id);
+        $bar->delete();
+        return response()->json($bar->toArray());
     }
 }

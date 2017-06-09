@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJadwalsTable extends Migration
+class CreateJamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateJadwalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwals', function (Blueprint $table) {
-           $table->increments('id');
-            $table->string('bar');
+        Schema::create('jams', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('jam');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateJadwalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jadwals');
+        Schema::dropIfExists('jams');
     }
 }
