@@ -36,9 +36,9 @@ class BarController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'bar'=>'required',
-            ]);
+        // $this->validate($request,[
+        //     'bar'=>'required',
+        //     ]);
         $bar = new Bar();
         $bar->bar=$request->input('bar');
         $bar->save();

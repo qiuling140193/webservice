@@ -17,11 +17,10 @@ class CreateDosensTable extends Migration
             $table->increments('nid');
             $table->string('nama'); 
             $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('gender');
             $table->string('phone');
             $table->string('email');
-            $table->string('password');
             $table->timestamps();
         });
     }

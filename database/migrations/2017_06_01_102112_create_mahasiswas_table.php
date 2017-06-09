@@ -17,7 +17,7 @@ class CreateMahasiswasTable extends Migration
             $table->increments('nim');
             $table->string('nama');
             $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('gender');
             $table->longText('alamat');
             $table->string('phone');

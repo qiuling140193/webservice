@@ -3,8 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,12 +40,23 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request 
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
+        if($request->expectsJson()){
+            $e=$this->prepareException($exception);
+            if($e instanceof AuthenticationException){
+                return response()->json(['error'=>'Unauthenticated.'], 401);
+            }elseif ($e instanceof ValidationException) {
+                $errors = $e->validator->errors()->getMessages();
+                return response()->json($errors, 422);
+            }else{
+                return response()->json(['error'=>'Internal Server Error'],500);
+            }
+        }
         return parent::render($request, $exception);
     }
 
