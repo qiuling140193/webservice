@@ -15,16 +15,18 @@ class CreateJdwlsTable extends Migration
     {
         Schema::create('jdwls', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_kelas')->unsigned();
-            $table->foreign('id_kelas')->references('id')->on('kelas');
-            $table->integer('id_fakultas')->unsigned();
-            $table->foreign('id_fakultas')->references('id')->on('fakultas');
-            $table->integer('id_jam')->unsigned();
-            $table->foreign('id_jam')->references('id')->on('jams');
             $table->string('semester');
             $table->string('hari');
+            $table->integer('id_jurusan')->unsigned();
+            $table->foreign('id_jurusan')->references('id')->on('jurusans');
             $table->integer('nid')->unsigned();
             $table->foreign('nid')->references('nid')->on('dosens');
+            $table->integer('id_kelas')->unsigned();
+            $table->foreign('id_kelas')->references('id')->on('kelas');
+            $table->integer('id_jam')->unsigned();
+            $table->foreign('id_jam')->references('id')->on('jams');
+            $table->integer('id_matakuliah')->unsigned();
+            $table->foreign('id_matakuliah')->references('id')->on('matakuliahs');                    
             $table->timestamps();
         });
     }

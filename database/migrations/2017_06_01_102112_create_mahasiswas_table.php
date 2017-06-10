@@ -25,6 +25,8 @@ class CreateMahasiswasTable extends Migration
             $table->string('tahun');
             $table->integer('id_fakultas')->unsigned();
             $table->foreign('id_fakultas')->references('id')->on('fakultas');
+            $table->integer('id_jurusan')->unsigned();
+            $table->foreign('id_jurusan')->references('id')->on('jurusans');
             $table->timestamps();
         });
     }

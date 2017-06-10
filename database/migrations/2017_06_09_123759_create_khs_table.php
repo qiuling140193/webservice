@@ -19,11 +19,11 @@ class CreateKhsTable extends Migration
             $table->foreign('nim')->references('nim')->on('mahasiswas');
             $table->integer('id_matkul')->unsigned();
             $table->foreign('id_matkul')->references('id')->on('matakuliahs');
-            $table->integer('absensi');
-            $table->integer('tugas');
-            $table->integer('uts');
-            $table->integer('uas');
-            $table->integer('grade');
+            $table->string('absensi');
+            $table->string('tugas');
+            $table->string('uts');
+            $table->string('uas');
+            $table->string('grade');
             $table->timestamps();
         });
     }
