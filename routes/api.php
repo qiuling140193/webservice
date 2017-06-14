@@ -24,3 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::put('/foos/{id}','FooController@put');
 
 Route::resource('bar','BarController',['except'=>['create','edit']]);
+Route::post('/login','AuthenticateController@authenticate');
+Route::resource('kelas','RuangController');
+Route::resource('admin','adminController');
+Route::resource('user','userController');
+Route::resource('nilai','nilaiController');
