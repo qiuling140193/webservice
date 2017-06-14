@@ -72,7 +72,8 @@ class nilaiController extends Controller
      */
     public function show($id)
     {
-        //
+        $nilai = nilai::find($id);
+        return response()->json($nilai->toArray());
     }
 
     /**
