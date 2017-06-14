@@ -29,3 +29,7 @@ Route::resource('kelas','RuangController');
 Route::resource('admin','adminController');
 Route::resource('user','userController');
 Route::resource('nilai','nilaiController');
+Route::resource('matakuliah', 'MataKuliahController', ['except'=>['create','edit']]);
+Route::resource('jurusan', 'JurusanController', ['except'=>['create','edit']]);
+Route::resource('fakultas', 'FakultasController', ['except'=>['create','edit']]);
+Route::resource('krs', 'krsController', ['except'=>['create','edit']]);
