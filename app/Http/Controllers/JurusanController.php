@@ -30,8 +30,9 @@ class JurusanController extends Controller
         $jurusan = new jurusan();
 
         $jurusan->jurusan = $request->input('nama');
+        $jurusan->jurusan = $request->input('id_fakultas');
         $jurusan->save();
-
+        
         return response()->json($jurusan);
     }
 

@@ -30,6 +30,7 @@ class MataKuliahController extends Controller
         $matakuliah = new matakuliah();
 
         $matakuliah->matakuliah = $request->input('nama');
+        $matakuliah->matakuliah = $request->input('sks');
         $matakuliah->save();
 
         return response()->json($matakuliah);
