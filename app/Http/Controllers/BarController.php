@@ -14,6 +14,8 @@ class BarController extends Controller
      */
     public function index()
     {
+        $bars = JWTAuth::parseToken()->authenticate();
+        dd($user);
         $bars=Bar::get();
         return response()->json($bars->toArray());
     }
