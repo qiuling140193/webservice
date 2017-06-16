@@ -33,6 +33,10 @@ Route::resource('matakuliah', 'MataKuliahController');
 Route::resource('jurusan', 'JurusanController');
 Route::resource('fakultas', 'FakultasController');
 Route::resource('krs', 'krsController');
+<<<<<<< HEAD
+
+=======
+>>>>>>> cc18c63c50650b2dfb1d41e2f6329785d769a3bb
 Route::resource('mahasiswa', 'MahasiswaController');
 Route::resource('jdwl', 'JadwalController');
 Route::resource('dosen', 'DosenController');

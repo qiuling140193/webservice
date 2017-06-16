@@ -33,6 +33,7 @@ Route::resource('matakuliah', 'MataKuliahController');
 Route::resource('jurusan', 'JurusanController');
 Route::resource('fakultas', 'FakultasController');
 Route::resource('krs', 'krsController');
+
 Route::resource('mahasiswa', 'MahasiswaController');
 Route::resource('jdwl', 'JadwalController');
 Route::resource('dosen', 'DosenController');
