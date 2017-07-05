@@ -11,14 +11,11 @@ class MahasiswaController extends Controller
     public function index()
     {
     	$mahasiswa = mahasiswa::get();
-    	
         return response()->json($mahasiswa->toArray());
     }
 
      public function store(Request $request)
     {
-
-        try{
             $this->validate($request, [
                 'nama'=>'required',
 	    		'tempat_lahir'=>'required',
@@ -31,33 +28,26 @@ class MahasiswaController extends Controller
 	    		'id_fakultas'=>'required',
 	    		'id_jurusan'=>'required',
                ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
 
         $mahasiswa = new mahasiswa();
-
-        $mahasiswa->mahasiswa = $request->input('nama');
-        $mahasiswa->mahasiswa = $request->input('tempat_lahir');
-        $mahasiswa->mahasiswa = $request->input('tanggal_lahir');
-        $mahasiswa->mahasiswa = $request->input('gender');
-        $mahasiswa->mahasiswa = $request->input('alamat');
-        $mahasiswa->mahasiswa = $request->input('phone');
-        $mahasiswa->mahasiswa = $request->input('email');
-        $mahasiswa->mahasiswa = $request->input('tahun');
-        $mahasiswa->mahasiswa = $request->input('id_fakultas');
-        $mahasiswa->mahasiswa = $request->input('id_jurusan');
+        $mahasiswa->nama = $request->input('nama');
+        $mahasiswa->tempat_lahir = $request->input('tempat_lahir');
+        $mahasiswa->tanggal_lahir = $request->input('tanggal_lahir');
+        $mahasiswa->gender = $request->input('gender');
+        $mahasiswa->alamat = $request->input('alamat');
+        $mahasiswa->phone = $request->input('phone');
+        $mahasiswa->email = $request->input('email');
+        $mahasiswa->tahun = $request->input('tahun');
+        $mahasiswa->id_fakultas = $request->input('id_fakultas');
+        $mahasiswa->id_jurusan = $request->input('id_jurusan');
         $mahasiswa->save();
-
         return response()->json($mahasiswa);
     }
 
-    public function show(Request $request)
+    public function show($nim)
     {
     	$mahasiswa = mahasiswa::find($nim);
-
         return response()->json($mahasiswa->toArray());
-
     }
 
 
@@ -73,21 +63,20 @@ class MahasiswaController extends Controller
     		'email'=>'required',
     		'tahun'=>'required',
     		'id_fakultas'=>'required',
-    		'id_jurusan'=>'required',]);
+    		'id_jurusan'=>'required',
+            ]);
     	$mahasiswa = mahasiswa::find($nim);
-        $mahasiswa->mahasiswa = $request->input('nama');
-        $mahasiswa->mahasiswa = $request->input('tempat_lahir');
-        $mahasiswa->mahasiswa = $request->input('tanggal_lahir');
-        $mahasiswa->mahasiswa = $request->input('gender');
-        $mahasiswa->mahasiswa = $request->input('alamat');
-        $mahasiswa->mahasiswa = $request->input('phone');
-        $mahasiswa->mahasiswa = $request->input('email');
-        $mahasiswa->mahasiswa = $request->input('tahun');
-        $mahasiswa->mahasiswa = $request->input('id_fakultas');
-        $mahasiswa->mahasiswa = $request->input('id_jurusan');
-
+        $mahasiswa->nama = $request->input('nama');
+        $mahasiswa->tempat_lahir = $request->input('tempat_lahir');
+        $mahasiswa->tanggal_lahir = $request->input('tanggal_lahir');
+        $mahasiswa->gender = $request->input('gender');
+        $mahasiswa->alamat = $request->input('alamat');
+        $mahasiswa->phone = $request->input('phone');
+        $mahasiswa->email = $request->input('email');
+        $mahasiswa->tahun = $request->input('tahun');
+        $mahasiswa->id_fakultas = $request->input('id_fakultas');
+        $mahasiswa->id_jurusan = $request->input('id_jurusan');
         $mahasiswa->save();
-
         return response()->json($mahasiswa->toArray());
     }
 
@@ -95,7 +84,6 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = mahasiswa::find($nim);
         $mahasiswa->delete();
-
         return response()->json($mahasiswa->toArray());
     }
 }

@@ -11,35 +11,24 @@ class FakultasController extends Controller
     public function index()
     {
     	$fakultas = fakultas::get();
-    	
         return response()->json($fakultas->toArray());
     }
 
      public function store(Request $request)
     {
-
-        try{
             $this->validate($request, [
                 'nama'=>'required',
-                ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
-
+                ]); 
         $fakultas = new fakultas();
-
-        $fakultas->fakultas = $request->input('nama');
+        $fakultas->nama = $request->input('nama');
         $fakultas->save();
-
         return response()->json($fakultas);
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
     	$fakultas = fakultas::find($id);
-
         return response()->json($fakultas->toArray());
-
     }
 
 
@@ -47,11 +36,8 @@ class FakultasController extends Controller
     {
     	$this->validate($request, ['nama'=>'required',]);
         $fakultas = fakultas::find($id);
-        $fakultas->fakultas = $request->input('nama');
-
-
+        $fakultas->nama = $request->input('nama');
         $fakultas->save();
-
         return response()->json($fakultas->toArray());
     }
 
@@ -59,7 +45,6 @@ class FakultasController extends Controller
     {
         $fakultas = fakultas::find($id);
         $fakultas->delete();
-
         return response()->json($fakultas->toArray());
     }
 }
