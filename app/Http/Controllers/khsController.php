@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\khs;
-use Input;
+use App\mahasiswa;
+use App\matakuliah;
 
 class khsController extends Controller
 {

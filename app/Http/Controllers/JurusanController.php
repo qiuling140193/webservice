@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jurusan;
-use Input;
+use App\fakultas;
 
 class JurusanController extends Controller
 {

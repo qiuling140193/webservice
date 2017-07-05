@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\jdwl;
-use Input;
+use App\jurusan;
+use App\dosen;
+use App\kelas;
+use App\id_matakuliah;
+use App\jam;
 
 class JadwalController extends Controller
 {

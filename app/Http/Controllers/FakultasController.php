@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\fakultas;
-use Input;
+
 
 class FakultasController extends Controller
 {
