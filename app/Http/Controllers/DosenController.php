@@ -67,13 +67,13 @@ class DosenController extends Controller
         return response()->json($dosen);
     }elseif ($user->id_level==2){
 
-           $dosen = dosen::find($nid);
+           $dosen = dosen::find($id);
 
             return response()->json($dosen->toArray());
         }
     }
 
-    public function show($nid)
+    public function show($id)
     {
     	$dosen = dosen::find($id);
         return response()->json($dosen->toArray());

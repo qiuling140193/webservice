@@ -1,6 +1,12 @@
-<h1>Eric Alexander 17081</h1>
-<h1>Friscilia Sutanto 17082</h1>
-<h1>Sri Wardani 17075</h1>
+<h1>Eric Alexander</h1>
+<p>Username : ericalexander49</p>
+<p>NIM : 17081</p>
+<h1>Friscilia Sutanto</h1>
+<p>Username : frisciliachen</p>
+<p>NIM : 17082</p>
+<h1>Sri Wardani</h1>
+<p>Username : qiuling140193</p>
+<p>NIM : 17075</p>
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
