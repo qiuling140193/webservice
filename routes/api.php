@@ -28,7 +28,7 @@ Route::group(['prefix'=>'v1'], function(){
 	Route::post('/login','AuthenticateController@authenticate');
 
 	Route::group(['middleware'=>['jwt.auth']],function(){
-		
+
 			Route::resource('bar','BarController',['except'=>['create','edit']]);
 			Route::resource('dosen', 'DosenController');
 			Route::resource('admin','adminController');
@@ -50,3 +50,4 @@ Route::resource('mahasiswa', 'MahasiswaController');
 Route::resource('jdwl', 'JadwalController');
 Route::resource('khs', 'khsController');
 
+Route::resource('bar','BarController');

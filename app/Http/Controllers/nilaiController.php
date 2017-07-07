@@ -17,7 +17,7 @@ class nilaiController extends Controller
      */
     public function index()
     {
-        $nilai=nilai::get();
+        $nilai=nilai::paginate();
         return response()->json($nilai->toArray());
     }
 

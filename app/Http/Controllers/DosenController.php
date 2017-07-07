@@ -24,7 +24,7 @@ class DosenController extends Controller
 
         }elseif ($user->id_level ==1) {
 
-            $dosen = dosen::get();
+            $dosen = dosen::paginate();
 
             return response()->json($dosen->toArray());
 

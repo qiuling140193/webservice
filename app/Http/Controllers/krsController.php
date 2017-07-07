@@ -12,7 +12,7 @@ class krsController extends Controller
 {
     public function index()
     {
-    	$krs = krs::get();
+    	$krs = krs::paginate();
         return response()->json($krs->toArray());
     }
 

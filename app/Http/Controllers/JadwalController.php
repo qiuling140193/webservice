@@ -19,7 +19,7 @@ class JadwalController extends Controller
     public function index()
     {
 
-    	$jadwal = jdwl::get();
+    	$jadwal = jdwl::paginate();
         return response()->json($jadwal->toArray());
     }
 

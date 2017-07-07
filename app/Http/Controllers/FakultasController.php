@@ -25,7 +25,7 @@ class FakultasController extends Controller
         	
             return response()->json($fakultas->toArray());
         }
-    	$fakultas = fakultas::get();
+    	$fakultas = fakultas::paginate();
         return response()->json($fakultas->toArray());
     }
 

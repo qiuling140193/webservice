@@ -14,7 +14,7 @@ class levelController extends Controller
      */
     public function index()
     {
-        $level=level::get();
+        $level=level::paginate();
         return response()->json($level->toArray());
     }
 

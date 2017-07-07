@@ -21,7 +21,7 @@ class JurusanController extends Controller
 
         }else {
 
-        	$jurusan = jurusan::get();
+        	$jurusan = jurusan::paginate();
         	
             return response()->json($jurusan->toArray());
         }

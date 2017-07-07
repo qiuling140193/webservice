@@ -18,15 +18,18 @@ class adminController extends Controller
      */
     public function index()
     {
+        // $this->grantIfRole('ROLE_ADMIN','ROLE_USER');
+        // $admin=admin::paginate();
+        // return response()->json($admin->toArray());
+
         $user=Auth::user();
 
         if($user->id_level!=1){
 
-            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }else {
-
-        $admin=admin::get();
+        $admin=admin::paginate();
         return response()->json($admin->toArray());
 
         }

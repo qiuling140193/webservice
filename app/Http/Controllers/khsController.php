@@ -11,7 +11,7 @@ class khsController extends Controller
 {
     public function index()
     {
-    	$khs = khs::get();
+    	$khs = khs::paginate();
         return response()->json($khs->toArray());
     }
 

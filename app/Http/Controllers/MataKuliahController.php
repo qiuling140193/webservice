@@ -10,7 +10,7 @@ class MataKuliahController extends Controller
 {
     public function index()
     {
-    	$matakuliah = matakuliah::get();
+    	$matakuliah = matakuliah::paginate();
         return response()->json($matakuliah->toArray());
     }
 
