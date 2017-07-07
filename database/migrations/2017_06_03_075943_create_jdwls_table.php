@@ -19,8 +19,8 @@ class CreateJdwlsTable extends Migration
             $table->string('hari');
             $table->integer('id_jurusan')->unsigned();
             $table->foreign('id_jurusan')->references('id')->on('jurusans');
-            $table->integer('nid')->unsigned();
-            $table->foreign('nid')->references('nid')->on('dosens');
+            $table->integer('id_dosen')->unsigned();
+            $table->foreign('id_dosen')->references('id')->on('dosens');
             $table->integer('id_kelas')->unsigned();
             $table->foreign('id_kelas')->references('id')->on('kelas');
             $table->integer('id_jam')->unsigned();

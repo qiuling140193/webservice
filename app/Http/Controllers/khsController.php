@@ -34,13 +34,13 @@ class khsController extends Controller
 
         $khs = new khs();
 
-        $khs->khs = $request->input('nim');
-        $khs->khs = $request->input('id_matkul');
-        $khs->khs = $request->input('absensi');
-        $khs->khs = $request->input('tugas');
-        $khs->khs = $request->input('uts');
-        $khs->khs = $request->input('uas');
-        $khs->khs = $request->input('grade');
+        $khs->nim = $request->input('nim');
+        $khs->id_matkul = $request->input('id_matkul');
+        $khs->absensi = $request->input('absensi');
+        $khs->tugas = $request->input('tugas');
+        $khs->uts = $request->input('uts');
+        $khs->uas = $request->input('uas');
+        $khs->grade = $request->input('grade');
         $khs->save();
 
         return response()->json($khs);
@@ -66,14 +66,13 @@ class khsController extends Controller
     		'uas'=>'required',
     		'grade'=>'required',]);
     	$khs = khs::find($id);
-        $khs->khs = $request->input('nim');
-        $khs->khs = $request->input('id_matkul');
-        $khs->khs = $request->input('absensi');
-        $khs->khs = $request->input('tugas');
-        $khs->khs = $request->input('uts');
-        $khs->khs = $request->input('uas');
-        $khs->khs = $request->input('grade');
-
+        $khs->nim = $request->input('nim');
+        $khs->id_matkul = $request->input('id_matkul');
+        $khs->absensi = $request->input('absensi');
+        $khs->tugas = $request->input('tugas');
+        $khs->uts = $request->input('uts');
+        $khs->uas = $request->input('uas');
+        $khs->grade = $request->input('grade');
         $khs->save();
 
         return response()->json($khs->toArray());

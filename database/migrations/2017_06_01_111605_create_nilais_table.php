@@ -16,8 +16,8 @@ class CreateNilaisTable extends Migration
         Schema::create('nilais', function (Blueprint $table) {
             $table->increments('id');
             $table->string('semester');
-            $table->integer('nid')->unsigned();
-            $table->foreign('nid')->references('nid')->on('dosens');
+            $table->integer('id_dosen')->unsigned();
+            $table->foreign('id_dosen')->references('id')->on('dosens');
             $table->integer('id_matkul')->unsigned();
             $table->foreign('id_matkul')->references('id')->on('matakuliahs');
             $table->integer('nim')->unsigned();

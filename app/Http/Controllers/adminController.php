@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\admin;
+use Auth;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class adminController extends Controller
 {
@@ -14,8 +18,18 @@ class adminController extends Controller
      */
     public function index()
     {
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+
         $admin=admin::get();
         return response()->json($admin->toArray());
+
+        }
     }
 
     /**
@@ -36,6 +50,14 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
+         $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+
         $this->validate($request,[
             'nama'=>'required',
             'tempat_lahir'=>'required',
@@ -53,6 +75,7 @@ class adminController extends Controller
         $admin->email=$request->input('email');
         $admin->save();
         return response()->json($admin);
+        }
     }
 
     /**
@@ -63,8 +86,16 @@ class adminController extends Controller
      */
     public function show($id)
     {
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
         $admin = admin::find($id);
         return response()->json($admin->toArray());
+    }
     }
 
     /**
@@ -87,6 +118,13 @@ class adminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
         $this->validate($request,[
             'nama'=>'required',
             'tempat_lahir'=>'required',
@@ -105,6 +143,7 @@ class adminController extends Controller
         $admin->save();
         return response()->json($admin->toArray());
     }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -114,8 +153,16 @@ class adminController extends Controller
      */
     public function destroy($id)
     {
-        $admin = admin::find($id);
-        $admin->delete();
-        return response()->json($admin->toArray());
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+            $admin = admin::find($id);
+            $admin->delete();
+            return response()->json($admin->toArray());
+        }
     }
 }

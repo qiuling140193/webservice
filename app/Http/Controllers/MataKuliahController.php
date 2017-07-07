@@ -29,8 +29,8 @@ class MataKuliahController extends Controller
 
         $matakuliah = new matakuliah();
 
-        $matakuliah->matakuliah = $request->input('nama');
-        $matakuliah->matakuliah = $request->input('sks');
+        $matakuliah->nama = $request->input('nama');
+        $matakuliah->sks = $request->input('sks');
         $matakuliah->save();
 
         return response()->json($matakuliah);
@@ -49,8 +49,8 @@ class MataKuliahController extends Controller
     {
         $this->validate($request, ['nama'=>'required', 'sks'=>'required',]);
     	$matakuliah = matakuliah::find($id);
-        $matakuliah->matakuliah = $request->input('nama');
-        $matakuliah->matakuliah = $request->input('sks');
+        $matakuliah->nama = $request->input('nama');
+        $matakuliah->sks = $request->input('sks');
 
         $matakuliah->save();
 

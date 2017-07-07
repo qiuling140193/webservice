@@ -53,6 +53,8 @@ class Handler extends ExceptionHandler
             }elseif ($e instanceof ValidationException) {
                 $errors = $e->validator->errors()->getMessages();
                 return response()->json($errors, 422);
+            // }elseif($e instanceof AccessDeniedHttpException) {
+            //     return response()->(['error'=> $e->getMessage()], $e->getStatusCode());
             }else{
                 return response()->json(['error'=>'Internal Server Error'],500);
             }

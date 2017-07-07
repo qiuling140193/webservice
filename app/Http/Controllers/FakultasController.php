@@ -4,62 +4,105 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\fakultas;
-use Input;
+use Auth;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class FakultasController extends Controller
 {
     public function index()
     {
-    	$fakultas = fakultas::get();
-    	
-        return response()->json($fakultas->toArray());
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+        	$fakultas = fakultas::get();
+        	
+            return response()->json($fakultas->toArray());
+        }
     }
 
      public function store(Request $request)
     {
+        $user=Auth::user();
 
-        try{
-            $this->validate($request, [
-                'nama'=>'required',
-                ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
+        if($user->id_level!=1){
 
-        $fakultas = new fakultas();
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        $fakultas->fakultas = $request->input('nama');
-        $fakultas->save();
+        }else {
 
-        return response()->json($fakultas);
-    }
+                try{
+                    $this->validate($request, [
+                        'nama'=>'required',
+                        ]);
+                } catch(\Exception $e) {
+                    throw new Exception("Salah"); 
+                    } 
+
+                $fakultas = new fakultas();
+
+                $fakultas->nama = $request->input('nama');
+                $fakultas->save();
+
+                return response()->json($fakultas);
+            }
+        }
 
     public function show(Request $request)
     {
-    	$fakultas = fakultas::find($id);
+        $user=Auth::user();
 
-        return response()->json($fakultas->toArray());
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+        	$fakultas = fakultas::find($id);
+
+            return response()->json($fakultas->toArray());
+        }   
 
     }
 
 
     public function update(Request $request, $id)
     {
-    	$this->validate($request, ['nama'=>'required',]);
-        $fakultas = fakultas::find($id);
-        $fakultas->fakultas = $request->input('nama');
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+        	$this->validate($request, ['nama'=>'required',]);
+            $fakultas = fakultas::find($id);
+            $fakultas->nama = $request->input('nama');
 
 
-        $fakultas->save();
+            $fakultas->save();
 
-        return response()->json($fakultas->toArray());
+            return response()->json($fakultas->toArray());
+        }
     }
 
     public function destroy($id)
     {
-        $fakultas = fakultas::find($id);
-        $fakultas->delete();
+        $user=Auth::user();
 
-        return response()->json($fakultas->toArray());
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+            $fakultas = fakultas::find($id);
+            $fakultas->delete();
+
+            return response()->json($fakultas->toArray());
+        }
     }
 }

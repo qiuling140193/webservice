@@ -29,8 +29,8 @@ class krsController extends Controller
 
         $krs = new krs();
 
-        $krs->krs = $request->input('nim');
-        $krs->krs = $request->input('id_matkul');
+        $krs->nim = $request->input('nim');
+        $krs->id_matkul = $request->input('id_matkul');
         $krs->save();
 
         return response()->json($krs);
@@ -49,8 +49,8 @@ class krsController extends Controller
     {
     	$this->validate($request, ['nim'=>'required', 'id_matkul'=>'required',]);
     	$krs = krs::find($id);
-        $krs->krs = $request->input('nim');
-        $krs->krs = $request->input('id_matkul');
+        $krs->nim = $request->input('nim');
+        $krs->id_matkul = $request->input('id_matkul');
 
         $krs->save();
 

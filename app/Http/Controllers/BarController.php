@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bar;
+use Auth;
+use App\User;
+
 
 class BarController extends Controller
 {
@@ -14,8 +17,16 @@ class BarController extends Controller
      */
     public function index()
     {
-        $bars = JWTAuth::parseToken()->authenticate();
-        dd($user);
+        // $user=Auth::user();
+        // if($user->id_level!=1){
+        //     return response()->json(['error'=>'Forbidden.'], 403);
+        // }
+        // // dd(Auth::user());
+        // $bars=Bar::get();
+        // return response()->json($bars->toArray());
+
+        $user = Auth::user();
+        if($user->)
         $bars=Bar::get();
         return response()->json($bars->toArray());
     }
