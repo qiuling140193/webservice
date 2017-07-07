@@ -8,6 +8,8 @@ use Auth;
 use App\User;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\fakultas;
+use App\jurusan;
 
 class MahasiswaController extends Controller
 {
@@ -15,14 +17,11 @@ class MahasiswaController extends Controller
     {
         
     	$mahasiswa = mahasiswa::get();
-    	
         return response()->json($mahasiswa->toArray());
     }
 
      public function store(Request $request)
     {
-
-        try{
             $this->validate($request, [
                 'nama'=>'required',
 	    		'tempat_lahir'=>'required',
@@ -35,9 +34,6 @@ class MahasiswaController extends Controller
 	    		'id_fakultas'=>'required',
 	    		'id_jurusan'=>'required',
                ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
 
         $mahasiswa = new mahasiswa();
         $mahasiswa->nama = $request->input('nama');
@@ -51,16 +47,13 @@ class MahasiswaController extends Controller
         $mahasiswa->id_fakultas = $request->input('id_fakultas');
         $mahasiswa->id_jurusan = $request->input('id_jurusan');
         $mahasiswa->save();
-
         return response()->json($mahasiswa);
     }
 
-    public function show(Request $request)
+    public function show($nim)
     {
     	$mahasiswa = mahasiswa::find($nim);
-
         return response()->json($mahasiswa->toArray());
-
     }
 
 
@@ -90,7 +83,6 @@ class MahasiswaController extends Controller
         $mahasiswa->id_fakultas = $request->input('id_fakultas');
         $mahasiswa->id_jurusan = $request->input('id_jurusan');
         $mahasiswa->save();
-
         return response()->json($mahasiswa->toArray());
     }
 
@@ -98,7 +90,6 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = mahasiswa::find($nim);
         $mahasiswa->delete();
-
         return response()->json($mahasiswa->toArray());
     }
 }

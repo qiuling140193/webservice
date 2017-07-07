@@ -9,6 +9,7 @@ use App\User;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+
 class FakultasController extends Controller
 {
     public function index()
@@ -24,6 +25,8 @@ class FakultasController extends Controller
         	
             return response()->json($fakultas->toArray());
         }
+    	$fakultas = fakultas::get();
+        return response()->json($fakultas->toArray());
     }
 
      public function store(Request $request)
@@ -53,7 +56,8 @@ class FakultasController extends Controller
             }
         }
 
-    public function show(Request $request)
+
+    public function show($id)
     {
         $user=Auth::user();
 
@@ -66,7 +70,6 @@ class FakultasController extends Controller
 
             return response()->json($fakultas->toArray());
         }   
-
     }
 
 
@@ -90,8 +93,10 @@ class FakultasController extends Controller
         }
     }
 
+
     public function destroy($id)
     {
+
         $user=Auth::user();
 
         if($user->id_level!=1){
@@ -104,5 +109,6 @@ class FakultasController extends Controller
 
             return response()->json($fakultas->toArray());
         }
+
     }
 }

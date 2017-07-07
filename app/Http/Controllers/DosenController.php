@@ -9,9 +9,12 @@ use App\User;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
+
+
 class DosenController extends Controller
 {
     public function index()
+
     {   
         $user=Auth::user();
 
@@ -44,6 +47,7 @@ class DosenController extends Controller
         }elseif ($user->id_level ==1) {
 
         try{
+
             $this->validate($request, [
                 'nama'=>'required',
 	    		'tempat_lahir'=>'required',
@@ -52,10 +56,6 @@ class DosenController extends Controller
 	    		'phone'=>'required',
 	    		'email'=>'required',
                 ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
-
         $dosen = new dosen();
         $dosen->nama=$request->input('nama');
         $dosen->tempat_lahir=$request->input('tempat_lahir');
@@ -64,7 +64,6 @@ class DosenController extends Controller
         $dosen->phone=$request->input('phone');
         $dosen->email=$request->input('email');
         $dosen->save();
-
         return response()->json($dosen);
     }elseif ($user->id_level==2){
 
@@ -74,12 +73,10 @@ class DosenController extends Controller
         }
     }
 
-    public function show(Request $request)
+    public function show($nid)
     {
     	$dosen = dosen::find($id);
-
         return response()->json($dosen->toArray());
-
     }
 
 

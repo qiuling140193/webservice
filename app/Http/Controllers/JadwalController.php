@@ -8,6 +8,11 @@ use Auth;
 use App\User;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\jurusan;
+use App\dosen;
+use App\kelas;
+use App\id_matakuliah;
+use App\jam;
 
 class JadwalController extends Controller
 {
@@ -15,12 +20,12 @@ class JadwalController extends Controller
     {
 
     	$jadwal = jdwl::get();
-    	
         return response()->json($jadwal->toArray());
     }
 
      public function store(Request $request)
     {
+
         $user=Auth::user();
 
         if($user->id_level!=1){
@@ -53,16 +58,15 @@ class JadwalController extends Controller
             $jadwal->id_matakuliah = $request->input('id_matakuliah');
             $jadwal->save();
             
-            return response()->json($jadwal);
+            return response()->json($jadwal->toArray());
         }
+
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
     	$jadwal = jdwl::find($id);
-
         return response()->json($jadwal->toArray());
-
     }
 
 
@@ -85,7 +89,6 @@ class JadwalController extends Controller
         $jadwal->id_jam = $request->input('id_jam');
         $jadwal->id_matakuliah = $request->input('id_matakuliah');
         $jadwal->save();
-
         return response()->json($jadwal->toArray());
     }
 
@@ -93,7 +96,6 @@ class JadwalController extends Controller
     {
         $jadwal = jdwl::find($id);
         $jadwal->delete();
-
         return response()->json($jadwal->toArray());
     }
 }

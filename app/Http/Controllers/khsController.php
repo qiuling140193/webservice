@@ -4,21 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\khs;
-use Input;
+use App\mahasiswa;
+use App\matakuliah;
 
 class khsController extends Controller
 {
     public function index()
     {
     	$khs = khs::get();
-    	
         return response()->json($khs->toArray());
     }
 
      public function store(Request $request)
     {
-
-        try{
             $this->validate($request, [
                 'nim'=>'required',
 	    		'id_matkul'=>'required',
@@ -28,12 +26,7 @@ class khsController extends Controller
 	    		'uas'=>'required',
 	    		'grade'=>'required',
                 ]);
-        } catch(\Exception $e) {
-            throw new Exception("Salah"); 
-            } 
-
         $khs = new khs();
-
         $khs->nim = $request->input('nim');
         $khs->id_matkul = $request->input('id_matkul');
         $khs->absensi = $request->input('absensi');
@@ -42,16 +35,13 @@ class khsController extends Controller
         $khs->uas = $request->input('uas');
         $khs->grade = $request->input('grade');
         $khs->save();
-
         return response()->json($khs);
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
     	$khs = khs::find($id);
-
         return response()->json($khs->toArray());
-
     }
 
 
@@ -64,7 +54,8 @@ class khsController extends Controller
     		'tugas'=>'required',
     		'uts'=>'required',
     		'uas'=>'required',
-    		'grade'=>'required',]);
+    		'grade'=>'required',
+            ]);
     	$khs = khs::find($id);
         $khs->nim = $request->input('nim');
         $khs->id_matkul = $request->input('id_matkul');
@@ -74,7 +65,6 @@ class khsController extends Controller
         $khs->uas = $request->input('uas');
         $khs->grade = $request->input('grade');
         $khs->save();
-
         return response()->json($khs->toArray());
     }
 
@@ -82,7 +72,6 @@ class khsController extends Controller
     {
         $khs = khs::find($id);
         $khs->delete();
-
         return response()->json($khs->toArray());
     }
 }
