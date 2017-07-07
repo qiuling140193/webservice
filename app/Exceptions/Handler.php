@@ -53,10 +53,14 @@ class Handler extends ExceptionHandler
             }elseif ($e instanceof ValidationException) {
                 $errors = $e->validator->errors()->getMessages();
                 return response()->json($errors, 422);
-            // }elseif($e instanceof AccessDeniedHttpException) {
-            //     return response()->(['error'=> $e->getMessage()], $e->getStatusCode());
+            }else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenExpiredException) {
+                return Response::json(['token_expired'], $e->getStatusCode());
+            } else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenInvalidException) {
+                return Response::json(['token_invalid'], $e->getStatusCode());
+            }else if($e instanceof AccessDeniedHttpException) {
+                return response()->json(['error'=> $e->getMessage()], $e->getStatusCode());
             }else{
-                return response()->json(['error'=>'Internal Server Error'],500);
+                return response()->json(['error'=> $e->getMessage()],500);
             }
         }
         return parent::render($request, $exception);

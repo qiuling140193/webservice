@@ -26,9 +26,10 @@ class BarController extends Controller
         // return response()->json($bars->toArray());
 
         $user = Auth::user();
-        if($user->)
+        if($user->id_level!=1){
         $bars=Bar::get();
         return response()->json($bars->toArray());
+    }
     }
 
     /**

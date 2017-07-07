@@ -46,29 +46,26 @@ class DosenController extends Controller
 
         }elseif ($user->id_level ==1) {
 
-        try{
-
             $this->validate($request, [
                 'nama'=>'required',
-	    		'tempat_lahir'=>'required',
-	    		'tanggal_lahir'=>'required',
-	    		'gender'=>'required',
-	    		'phone'=>'required',
-	    		'email'=>'required',
-                ]);
-        $dosen = new dosen();
-        $dosen->nama=$request->input('nama');
-        $dosen->tempat_lahir=$request->input('tempat_lahir');
-        $dosen->tanggal_lahir=$request->input('tanggal_lahir');
-        $dosen->gender=$request->input('gender');
-        $dosen->phone=$request->input('phone');
-        $dosen->email=$request->input('email');
-        $dosen->save();
-        return response()->json($dosen);
-    }elseif ($user->id_level==2){
-
+                'tempat_lahir'=>'required',
+                'tanggal_lahir'=>'required',
+                'gender'=>'required',
+                'phone'=>'required',
+                'email'=>'required',
+               ]);
+            $dosen = new dosen();
+            $dosen->nama=$request->input('nama');
+            $dosen->tempat_lahir=$request->input('tempat_lahir');
+            $dosen->tanggal_lahir=$request->input('tanggal_lahir');
+            $dosen->gender=$request->input('gender');
+            $dosen->phone=$request->input('phone');
+            $dosen->email=$request->input('email');
+            $dosen->save();
+            return response()->json($dosen);
+        
+        }elseif($user->id_level==2){
            $dosen = dosen::find($id);
-
             return response()->json($dosen->toArray());
         }
     }

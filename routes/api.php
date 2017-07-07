@@ -24,15 +24,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::put('/foos/{id}','FooController@put');
 
 
+Route::group(['prefix'=>'v1'], function(){
+	Route::post('/login','AuthenticateController@authenticate');
 
-Route::post('/login','AuthenticateController@authenticate');
-Route::group(['middleware'=>['jwt.auth']],function(){	
-		Route::resource('bar','BarController',['except'=>['create','edit']]);
-		Route::resource('dosen', 'DosenController');
-		Route::resource('admin','adminController');
-		Route::resource('fakultas', 'FakultasController');
-		Route::resource('jdwl', 'JadwalController');
-		Route::resource('jurusan', 'JurusanController');
+	Route::group(['middleware'=>['jwt.auth']],function(){
+		
+			Route::resource('bar','BarController',['except'=>['create','edit']]);
+			Route::resource('dosen', 'DosenController');
+			Route::resource('admin','adminController');
+			Route::resource('fakultas', 'FakultasController');
+			Route::resource('jdwl', 'JadwalController');
+			Route::resource('jurusan', 'JurusanController');
+	});
 });
 
 Route::resource('kelas','RuangController');
