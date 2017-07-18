@@ -26,4 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function profile(){
+        if($this->id_level == 1){
+            return $this->hasOne('App\admin');
+        }
+        else if($this->id_level == 2){
+            return $this->belongsTo('App\dosen');
+        }
+        else {
+            return $this->hasOne('App\mahasiswa');
+        }
+    }
 }

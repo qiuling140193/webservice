@@ -33,8 +33,10 @@ Route::group(['prefix'=>'v1'], function(){
 			Route::resource('dosen', 'DosenController');
 			Route::resource('admin','adminController');
 			Route::resource('fakultas', 'FakultasController');
-			Route::resource('jdwl', 'JadwalController');
+			Route::resource('jadwal', 'JadwalController');
 			Route::resource('jurusan', 'JurusanController');
+			Route::resource('mediafile','MediaFileController');
+			Route::resource('mahasiswa', 'MahasiswaController');
 	});
 });
 
@@ -46,8 +48,9 @@ Route::resource('matakuliah', 'MataKuliahController');
 
 
 Route::resource('krs', 'krsController');
-Route::resource('mahasiswa', 'MahasiswaController');
-Route::resource('jdwl', 'JadwalController');
+
+// Route::resource('jdwl', 'JadwalController');
 Route::resource('khs', 'khsController');
 
 Route::resource('bar','BarController');
+// Route::resource('mediafile','MediaFileController');

@@ -30,9 +30,9 @@ class DosenController extends Controller
 
         }elseif ($user->id_level==2){
 
-           $dosen = dosen::find($id);
+           $dosen = Auth::user()->profile;
 
-            return response()->json($dosen->toArray());
+            return $dosen;
         }
     }
 
@@ -40,11 +40,11 @@ class DosenController extends Controller
     {
         $user=Auth::user();
 
-        if($user->id_level==3){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        }elseif ($user->id_level ==1) {
+        }else{
 
             $this->validate($request, [
                 'nama'=>'required',
@@ -63,17 +63,30 @@ class DosenController extends Controller
             $dosen->email=$request->input('email');
             $dosen->save();
             return response()->json($dosen);
-        
-        }elseif($user->id_level==2){
-           $dosen = dosen::find($id);
-            return response()->json($dosen->toArray());
         }
     }
 
     public function show($id)
     {
-    	$dosen = dosen::find($id);
-        return response()->json($dosen->toArray());
+         $user=Auth::user();
+
+        if($user->id_level==3){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }elseif ($user->id_level ==1) {
+
+            $dosen = dosen::find($id);
+            return response()->json($dosen->toArray());
+
+        }elseif ($user->id_level==2){
+
+           $dosen = Auth::user()->profile;
+
+            return $dosen;
+        }
+        	
+        }
     }
 
 
@@ -81,11 +94,11 @@ class DosenController extends Controller
     {
         $user=Auth::user();
 
-        if($user->id_level==3){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        }elseif ($user->id_level ==1) {
+        }else{
 
         	$this->validate($request, [
         		'nama'=>'required',
@@ -106,11 +119,6 @@ class DosenController extends Controller
 
             return response()->json($dosen->toArray());
         
-        }elseif ($user->id_level==2){
-
-           $dosen = dosen::find($id);
-
-            return response()->json($dosen->toArray());
         }
     }
 
@@ -118,22 +126,17 @@ class DosenController extends Controller
     {
         $user=Auth::user();
 
-        if($user->id_level==3){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        }elseif ($user->id_level ==1) {
+        }else{
 
             $dosen = dosen::find($id);
             $dosen->delete();
 
             return response()->json($dosen->toArray());
 
-        }elseif ($user->id_level==2){
-
-           $dosen = dosen::find($id);
-
-            return response()->json($dosen->toArray());
         }
     }
 }

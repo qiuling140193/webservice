@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKrsTable extends Migration
+class CreateMediaFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateKrsTable extends Migration
      */
     public function up()
     {
-        Schema::create('krs', function (Blueprint $table) {
+        Schema::create('media_files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_mahasiswa')->unsigned();
-            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas');
-            $table->integer('id_matkul')->unsigned();
-            $table->foreign('id_matkul')->references('id')->on('matakuliahs');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateKrsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('krs');
+        Schema::dropIfExists('media_files');
     }
 }

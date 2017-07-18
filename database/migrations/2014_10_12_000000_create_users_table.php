@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('id_level')->unsigned();
             $table->foreign('id_level')->references('id')->on('levels');
+            $table->integer('profile_id');
             $table->rememberToken();
             $table->timestamps();
         });

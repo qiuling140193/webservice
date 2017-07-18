@@ -17,8 +17,20 @@ class nilaiController extends Controller
      */
     public function index()
     {
-        $nilai=nilai::paginate();
-        return response()->json($nilai->toArray());
+         $user=Auth::user();
+
+        if($user->id_level==3){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }elseif ($user->id_level ==1) {
+
+            $nilai=nilai::paginate();
+            return response()->json($nilai->toArray());
+
+        }elseif ($user->id_level==2){
+            // $nilai=nilai::paginate();
+            // return response()->json($nilai->toArray());
     }
 
     /**
@@ -39,29 +51,37 @@ class nilaiController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request,[
-            'semester'=>'required',
-            'nid'=>'required',
-            'id_matkul'=>'required',
-            'nim'=>'required',
-            'absensi'=>'required',
-            'tugas'=>'required',
-            'uts'=>'required',
-            'uas'=>'required',
-            'grade'=>'required'
-            ]);
-        $nilai = new nilai();
-        $nilai->semester=$request->input('semester');
-        $nilai->nid=$request->input('nid');
-        $nilai->id_matkul=$request->input('id_matkul');
-        $nilai->nim=$request->input('nim');
-        $nilai->absensi=$request->input('absensi');
-        $nilai->tugas=$request->input('tugas');
-        $nilai->uts=$request->input('uts');
-        $nilai->uas=$request->input('uas');
-        $nilai->grade=$request->input('grade');
-        $nilai->save();
-        return response()->json($nilai);
+         $user=Auth::user();
+
+        if($user->id_level!=2){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        }else {
+             $this->validate($request,[
+                'semester'=>'required',
+                'nid'=>'required',
+                'id_matkul'=>'required',
+                'nim'=>'required',
+                'absensi'=>'required',
+                'tugas'=>'required',
+                'uts'=>'required',
+                'uas'=>'required',
+                'grade'=>'required'
+                ]);
+            $nilai = new nilai();
+            $nilai->semester=$request->input('semester');
+            $nilai->nid=$request->input('nid');
+            $nilai->id_matkul=$request->input('id_matkul');
+            $nilai->nim=$request->input('nim');
+            $nilai->absensi=$request->input('absensi');
+            $nilai->tugas=$request->input('tugas');
+            $nilai->uts=$request->input('uts');
+            $nilai->uas=$request->input('uas');
+            $nilai->grade=$request->input('grade');
+            $nilai->save();
+            return response()->json($nilai);
+        }
     }
 
     /**
@@ -96,29 +116,37 @@ class nilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'semester'=>'required',
-            'nid'=>'required',
-            'id_matkul'=>'required',
-            'nim'=>'required',
-            'absensi'=>'required',
-            'tugas'=>'required',
-            'uts'=>'required',
-            'uas'=>'required',
-            'grade'=>'required'
-            ]);
-        $nilai = nilai::find($id);
-        $nilai->semester=$request->input('semester');
-        $nilai->nid=$request->input('nid');
-        $nilai->id_matkul=$request->input('id_matkul');
-        $nilai->nim=$request->input('nim');
-        $nilai->absensi=$request->input('absensi');
-        $nilai->tugas=$request->input('tugas');
-        $nilai->uts=$request->input('uts');
-        $nilai->uas=$request->input('uas');
-        $nilai->grade=$request->input('grade');
-        $nilai->save();
-        return response()->json($nilai->toArray());
+         $user=Auth::user();
+
+        if($user->id_level!=2){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        }else {
+            $this->validate($request,[
+                'semester'=>'required',
+                'nid'=>'required',
+                'id_matkul'=>'required',
+                'nim'=>'required',
+                'absensi'=>'required',
+                'tugas'=>'required',
+                'uts'=>'required',
+                'uas'=>'required',
+                'grade'=>'required'
+                ]);
+            $nilai = nilai::find($id);
+            $nilai->semester=$request->input('semester');
+            $nilai->nid=$request->input('nid');
+            $nilai->id_matkul=$request->input('id_matkul');
+            $nilai->nim=$request->input('nim');
+            $nilai->absensi=$request->input('absensi');
+            $nilai->tugas=$request->input('tugas');
+            $nilai->uts=$request->input('uts');
+            $nilai->uas=$request->input('uas');
+            $nilai->grade=$request->input('grade');
+            $nilai->save();
+            return response()->json($nilai->toArray());
+        }
     }
 
     /**

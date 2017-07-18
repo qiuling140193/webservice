@@ -10,22 +10,38 @@ class MataKuliahController extends Controller
 {
     public function index()
     {
-    	$matakuliah = matakuliah::paginate();
-        return response()->json($matakuliah->toArray());
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+            }else {
+        	$matakuliah = matakuliah::paginate();
+            return response()->json($matakuliah->toArray());
+        }
     }
 
      public function store(Request $request)
     {
-            $this->validate($request, [
-                'nama'=>'required',
-                'sks'=>'required',
-                ]);
+        $user=Auth::user();
 
-        $matakuliah = new matakuliah();
-        $matakuliah->nama = $request->input('nama');
-        $matakuliah->sks = $request->input('sks');
-        $matakuliah->save();
-        return response()->json($matakuliah);
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        }else {
+                $this->validate($request, [
+                    'nama'=>'required',
+                    'sks'=>'required',
+                    ]);
+
+            $matakuliah = new matakuliah();
+            $matakuliah->nama = $request->input('nama');
+            $matakuliah->sks = $request->input('sks');
+            $matakuliah->save();
+            return response()->json($matakuliah);
+        }
     }
 
     public function show($id)
@@ -38,21 +54,37 @@ class MataKuliahController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-                'nama'=>'required',
-                'sks'=>'required',
-                ]);
-    	$matakuliah = matakuliah::find($id);
-        $matakuliah->nama = $request->input('nama');
-        $matakuliah->sks = $request->input('sks');
-        $matakuliah->save();
-        return response()->json($matakuliah->toArray());
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        }else {
+            $this->validate($request, [
+                    'nama'=>'required',
+                    'sks'=>'required',
+                    ]);
+        	$matakuliah = matakuliah::find($id);
+            $matakuliah->nama = $request->input('nama');
+            $matakuliah->sks = $request->input('sks');
+            $matakuliah->save();
+            return response()->json($matakuliah->toArray());
+        }
     }
 
     public function destroy($id)
     {
-        $matakuliah = matakuliah::find($id);
-        $matakuliah->delete();
-        return response()->json($matakuliah->toArray());
+        $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        }else {
+            $matakuliah = matakuliah::find($id);
+            $matakuliah->delete();
+            return response()->json($matakuliah->toArray());
+        }
     }
 }

@@ -10,4 +10,8 @@ class admin extends Model
         'nama','tempat_lahir','tanggal_lahir','gender','phone','email'
         ];
          public $timestamps=false;
+
+         public function user(){
+    	return $this->hasOne('App\User', 'profile');
+    }
 }

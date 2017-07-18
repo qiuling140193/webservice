@@ -11,20 +11,37 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use App\jurusan;
 use App\dosen;
 use App\kelas;
-use App\id_matakuliah;
+use App\matakuliah;
 use App\jam;
+use App\jdwl;
 
 class JadwalController extends Controller
 {
     public function index()
     {
+        $user=Auth::user();
 
-    	$jadwal = jdwl::paginate();
-        return response()->json($jadwal->toArray());
+        if($user->id_level==3){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }elseif ($user->id_level ==1) {
+
+        	$jadwal = jdwl::paginate();
+
+            return response()->json($jadwal->toArray());
+
+        }elseif ($user->id_level==2){
+
+           $dosen = Auth::jdwl()->profile;
+
+            return $dosen;
+        }
     }
 
      public function store(Request $request)
     {
+
 
         $user=Auth::user();
 
@@ -34,7 +51,6 @@ class JadwalController extends Controller
 
         }else {
 
-            try{
                 $this->validate($request, [
                     'semester'=>'required',
     	    		'hari'=>'required',
@@ -44,9 +60,6 @@ class JadwalController extends Controller
     	    		'id_jam'=>'required',
     	    		'id_matakuliah'=>'required',
                     ]);
-            } catch(\Exception $e) {
-                throw new Exception("Salah"); 
-                } 
 
             $jadwal = new jdwl();
             $jadwal->semester = $request->input('semester');
@@ -72,30 +85,49 @@ class JadwalController extends Controller
 
     public function update(Request $request, $id)
     {
-    	$this->validate($request, [
-    		'semester'=>'required',
-    		'hari'=>'required',
-    		'id_jurusan'=>'required',
-    		'id_dosen'=>'required',
-    		'id_kelas'=>'required',
-    		'id_jam'=>'required',
-    		'id_matakuliah'=>'required',]);
+    	 $user=Auth::user();
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+
+                $this->validate($request, [
+                    'semester'=>'required',
+                    'hari'=>'required',
+                    'id_jurusan'=>'required',
+                    'id_dosen'=>'required',
+                    'id_kelas'=>'required',
+                    'id_jam'=>'required',
+                    'id_matakuliah'=>'required',
+                    ]);
+           
     	$jadwal = jdwl::find($id);
         $jadwal->semester = $request->input('semester');
-        $jadwal->hari = $request->input('hari');
-        $jadwal->id_jurusan = $request->input('id_jurusan');
-        $jadwal->id_dosen = $request->input('id_dosen');
-        $jadwal->id_kelas = $request->input('id_kelas');
-        $jadwal->id_jam = $request->input('id_jam');
-        $jadwal->id_matakuliah = $request->input('id_matakuliah');
-        $jadwal->save();
-        return response()->json($jadwal->toArray());
+            $jadwal->hari = $request->input('hari');
+            $jadwal->id_jurusan = $request->input('id_jurusan');
+            $jadwal->id_dosen = $request->input('id_dosen');
+            $jadwal->id_kelas = $request->input('id_kelas');
+            $jadwal->id_jam = $request->input('id_jam');
+            $jadwal->id_matakuliah = $request->input('id_matakuliah');
+            $jadwal->save();
+            
+            return response()->json($jadwal->toArray());
+        }
+
     }
 
     public function destroy($id)
     {
-        $jadwal = jdwl::find($id);
-        $jadwal->delete();
-        return response()->json($jadwal->toArray());
+            if($user->id_level!=1){
+
+                return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+            }else {
+            $jadwal = jdwl::find($id);
+            $jadwal->delete();
+            return response()->json($jadwal->toArray());
+        }
     }
 }

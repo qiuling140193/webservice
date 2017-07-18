@@ -46,23 +46,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($request->expectsJson()){
-            $e=$this->prepareException($exception);
-            if($e instanceof AuthenticationException){
-                return response()->json(['error'=>'Unauthenticated.'], 401);
-            }elseif ($e instanceof ValidationException) {
-                $errors = $e->validator->errors()->getMessages();
-                return response()->json($errors, 422);
-            }else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenExpiredException) {
-                return Response::json(['token_expired'], $e->getStatusCode());
-            } else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenInvalidException) {
-                return Response::json(['token_invalid'], $e->getStatusCode());
-            }else if($e instanceof AccessDeniedHttpException) {
-                return response()->json(['error'=> $e->getMessage()], $e->getStatusCode());
-            }else{
-                return response()->json(['error'=> $e->getMessage()],500);
-            }
-        }
+        // if($request->expectsJson()){
+        //     $e=$this->prepareException($exception);
+        //     if($e instanceof AuthenticationException){
+        //         return response()->json(['error'=>'Unauthenticated.'], 401);
+        //     }elseif ($e instanceof ValidationException) {
+        //         $errors = $e->validator->errors()->getMessages();
+        //         return response()->json($errors, 422);
+        //     }else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenExpiredException) {
+        //         return Response::json(['token_expired'], $e->getStatusCode());
+        //     } else if ($e instanceof Tymon\JWTAuth\Exceptions\TokenInvalidException) {
+        //         return Response::json(['token_invalid'], $e->getStatusCode());
+        //     }else if($e instanceof AccessDeniedHttpException) {
+        //         return response()->json(['error'=> $e->getMessage()], $e->getStatusCode());
+        //     }else{
+        //         return response()->json(['error'=> $e->getMessage()],500);
+        //     }
+        // }
         return parent::render($request, $exception);
     }
 

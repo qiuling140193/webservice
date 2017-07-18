@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DosenTableSeeder::class);
         $this->call(adminTableSeeder::class);
         $this->call(jadwalTableSeeder::class);
-        $this->call(NilaiTableSeeder::class);
-        $this->call(KHSTableSeeder::class);
-        $this->call(KRSTableSeeder::class);
+        // $this->call(NilaiTableSeeder::class);
+        // $this->call(KHSTableSeeder::class);
+        // $this->call(KRSTableSeeder::class);
     }
 }

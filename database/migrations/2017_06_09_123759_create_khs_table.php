@@ -15,8 +15,8 @@ class CreateKhsTable extends Migration
     {
         Schema::create('khs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nim')->unsigned();
-            $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->integer('id_mahasiswa')->unsigned();
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas');
             $table->integer('id_matkul')->unsigned();
             $table->foreign('id_matkul')->references('id')->on('matakuliahs');
             $table->string('absensi');

@@ -20,8 +20,8 @@ class CreateNilaisTable extends Migration
             $table->foreign('id_dosen')->references('id')->on('dosens');
             $table->integer('id_matkul')->unsigned();
             $table->foreign('id_matkul')->references('id')->on('matakuliahs');
-            $table->integer('nim')->unsigned();
-            $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->integer('id_mahasiswa')->unsigned();
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas');
             $table->string('absensi');
             $table->string('tugas');
             $table->string('uts');
