@@ -13,6 +13,37 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class DosenController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/dosen",
+     *      summary="Retrieves the collection of MediaFile resources.",
+     *      produces={"application/json"},
+     *      tags={"Dosen"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Dosen collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/dosen")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
+     */   
     public function index()
 
     {   
@@ -24,7 +55,7 @@ class DosenController extends Controller
 
         }elseif ($user->id_level ==1) {
 
-            $dosen = dosen::paginate();
+            $dosen = dosen::paginate(10);
 
             return response()->json($dosen->toArray());
 
@@ -35,7 +66,42 @@ class DosenController extends Controller
             return $dosen;
         }
     }
-
+        /**
+     * @SWG\Post(
+     *      path="/api/v1/dosen",
+     *      summary="Data Dosen",
+     *      produces={"application/json"},
+     *      consumes={"application/json"},
+     *      tags={"Dosen"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Users Token.",
+     *          @SWG\Property(
+     *              property="token",
+     *              type="string"
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="Data Dosen",
+     *          in="body",
+     *          required=true,
+     *          type="string",
+     *          @SWG\Schema(
+     *              type="string"
+     *          )
+     *      )
+     * )
+    */
      public function store(Request $request)
     {
         $user=Auth::user();
@@ -84,8 +150,6 @@ class DosenController extends Controller
            $dosen = Auth::user()->profile;
 
             return $dosen;
-        }
-        	
         }
     }
 

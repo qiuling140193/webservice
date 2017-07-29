@@ -12,10 +12,35 @@ class userController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/user",
+     *      summary="Retrieves the collection of User resources.",
+     *      produces={"application/json"},
+     *      tags={"user"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Users collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/user")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
      */
     public function index()
     {
-        $user=User::paginate();
+        $user=User::paginate(10);
         return response()->json($user->toArray());
     }
 

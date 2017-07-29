@@ -11,7 +11,6 @@ class level extends Model
         ];
         public function user()
     {
-//        return $this->hasMany('App\Product');
         return $this->hasMany(User::class);
     }
 }

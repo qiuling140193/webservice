@@ -18,7 +18,7 @@ class khsController extends Controller
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
         }else {
-        	$khs = khs::paginate();
+        	$khs = khs::paginate(10);
             return response()->json($khs->toArray());
         }
     }

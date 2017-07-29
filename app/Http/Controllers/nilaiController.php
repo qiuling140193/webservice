@@ -17,20 +17,21 @@ class nilaiController extends Controller
      */
     public function index()
     {
-         $user=Auth::user();
+             $user=Auth::user();
 
-        if($user->id_level==3){
+            if($user->id_level==3){
 
-            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+                return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        }elseif ($user->id_level ==1) {
+            }elseif ($user->id_level ==1) {
 
-            $nilai=nilai::paginate();
-            return response()->json($nilai->toArray());
+                $nilai=nilai::paginate(10);
+                return response()->json($nilai->toArray());
 
-        }elseif ($user->id_level==2){
-            // $nilai=nilai::paginate();
-            // return response()->json($nilai->toArray());
+            }elseif ($user->id_level==2){
+                // $nilai=nilai::paginate();
+                // return response()->json($nilai->toArray());
+        }
     }
 
     /**

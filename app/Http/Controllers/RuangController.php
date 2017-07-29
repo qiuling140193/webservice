@@ -14,7 +14,7 @@ class RuangController extends Controller
      */
     public function index()
     {
-        $kelas=kelas::paginate();
+        $kelas=kelas::paginate(5);
         return response()->json($kelas->toArray());
     }
 

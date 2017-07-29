@@ -1,0 +1,538 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Sample API",
+        "contact": {
+            "name": "Sri Wardani",
+            "url": "https://uph.edu"
+        },
+        "version": "1.0"
+    },
+    "host": "webservice.app",
+    "basePath": "",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "User Login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users Token.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/dosen": {
+            "get": {
+                "tags": [
+                    "Dosen"
+                ],
+                "summary": "Retrieves the collection of MediaFile resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dosen collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dosen"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Dosen"
+                ],
+                "summary": "Data Dosen",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Data Dosen",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users Token.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/mahasiswa": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Retrieves the collection of MediaFile resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mahasiswa collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mahasiswa"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Data Mahasiswa",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tempat_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tanggal_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alamat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tahun",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_fakultas",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_jurusan",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Mahasiswa.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/dosen/{id}": {
+            "delete": {
+                "tags": [
+                    "dosen"
+                ],
+                "summary": "Removes the mediafile resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mediafile resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/v1/mediafiles": {
+            "get": {
+                "tags": [
+                    "mediafiles"
+                ],
+                "summary": "Retrieves the collection of MediaFile resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mediafiles collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mediafile"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/mediafiles/{id}": {
+            "delete": {
+                "tags": [
+                    "mediafies"
+                ],
+                "summary": "Removes the mediafile resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mediafile resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/v1/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Retrieves the collection of User resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/user"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "mediafile": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "update_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "user": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "update_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "dosen": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nama": {
+                    "type": "string"
+                },
+                "tempat_lahir": {
+                    "type": "string"
+                },
+                "tanggal_lahir": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "update_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "mahasiswa": {
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nama": {
+                    "type": "string"
+                },
+                "tempat_lahir": {
+                    "type": "string"
+                },
+                "tanggal_lahir": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "alamat": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "tahun": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id_fakultas": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id_jurusan": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "update_at": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

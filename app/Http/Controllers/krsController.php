@@ -12,30 +12,37 @@ class krsController extends Controller
 {
     public function index()
     {
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
         
-    	$krs = krs::paginate();
-        return response()->json($krs->toArray());
+        	$krs = krs::paginate();
+            return response()->json($krs->toArray());
+        }
     }
 
      public function store(Request $request)
     {
-         $user=Auth::user();
+             $user=Auth::user();
 
-        if($user->id_level!=3){
+            if($user->id_level!=3){
 
-            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+                return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
+            }
+            else{
+                $this->validate($request, [
+                    'nim'=>'required',
+                    'id_matkul'=>'required',
+                    ]);
+            $krs = new krs();
+            $krs->nim = $request->input('nim');
+            $krs->id_matkul = $request->input('id_matkul');
+            $krs->save();
+            return response()->json($krs);
         }
-        else{
-            $this->validate($request, [
-                'nim'=>'required',
-                'id_matkul'=>'required',
-                ]);
-        $krs = new krs();
-        $krs->nim = $request->input('nim');
-        $krs->id_matkul = $request->input('id_matkul');
-        $krs->save();
-        return response()->json($krs);
     }
 
     public function show($id)

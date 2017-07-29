@@ -11,6 +11,31 @@ class MediaFileController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/mediafiles",
+     *      summary="Retrieves the collection of MediaFile resources.",
+     *      produces={"application/json"},
+     *      tags={"mediafiles"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Mediafiles collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/mediafile")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
      */
     public function index()
     {
@@ -91,6 +116,37 @@ class MediaFileController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     *  @SWG\Delete(
+     *      path="/api/v1/mediafiles/{id}",
+     *      summary="Removes the mediafile resource.",
+     *      produces={"application/json"},
+     *      tags={"mediafies"},
+     *      @SWG\Response(
+     *          response=204,
+     *          description="Mediafile resource delete."
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized Action."
+     *      ),
+     *      @SWG\Response(
+     *          response=404,
+     *          description="Resource not found."
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
      */
     public function destroy($id)
     {

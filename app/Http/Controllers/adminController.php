@@ -29,7 +29,7 @@ class adminController extends Controller
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }else {
-        $admin=admin::paginate();
+        $admin=admin::paginate(10);
         return response()->json($admin->toArray());
 
         }

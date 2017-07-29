@@ -17,7 +17,7 @@ class MataKuliahController extends Controller
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
             }else {
-        	$matakuliah = matakuliah::paginate();
+        	$matakuliah = matakuliah::paginate(5);
             return response()->json($matakuliah->toArray());
         }
     }

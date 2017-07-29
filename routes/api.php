@@ -37,20 +37,21 @@ Route::group(['prefix'=>'v1'], function(){
 			Route::resource('jurusan', 'JurusanController');
 			Route::resource('mediafile','MediaFileController');
 			Route::resource('mahasiswa', 'MahasiswaController');
-	});
-});
-
-Route::resource('kelas','RuangController');
-
-Route::resource('user','userController');
-Route::resource('nilai','nilaiController');
-Route::resource('matakuliah', 'MataKuliahController');
+			Route::resource('khs', 'khsController');
+			Route::resource('bar','BarController');
+			Route::resource('kelas','RuangController');
+			Route::resource('user','userController');
+			Route::resource('nilai','nilaiController');
+			Route::resource('matakuliah', 'MataKuliahController');
 
 
 Route::resource('krs', 'krsController');
 
-// Route::resource('jdwl', 'JadwalController');
-Route::resource('khs', 'khsController');
+	});
+});
 
-Route::resource('bar','BarController');
+
+
+// Route::resource('jdwl', 'JadwalController');
+
 // Route::resource('mediafile','MediaFileController');

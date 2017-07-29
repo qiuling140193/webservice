@@ -13,7 +13,7 @@ use App\dosen;
 use App\kelas;
 use App\matakuliah;
 use App\jam;
-use App\jdwl;
+use App\mahasiswa;
 
 class JadwalController extends Controller
 {
@@ -23,11 +23,12 @@ class JadwalController extends Controller
 
         if($user->id_level==3){
 
-            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+            $mahasiswa = Auth::jdwl()->profile;
+            return $mahasiswa;
 
         }elseif ($user->id_level ==1) {
 
-        	$jadwal = jdwl::paginate();
+        	$jadwal = jdwl::paginate(5);
 
             return response()->json($jadwal->toArray());
 
