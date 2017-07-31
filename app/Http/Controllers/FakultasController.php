@@ -20,7 +20,7 @@ class FakultasController extends Controller
      *      tags={"Fakultas"},
      *      @SWG\Response(
      *          response=200,
-     *          description="fakultas collection.",
+     *          description="Fakultas collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/fakultas")
@@ -154,12 +154,12 @@ class FakultasController extends Controller
 
 /**  @SWG\Delete(
      *      path="/api/v1/fakultas/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Fakultas resource.",
      *      produces={"application/json"},
      *      tags={"Fakultas"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Fakultas resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,
@@ -175,7 +175,7 @@ class FakultasController extends Controller
      *          required=true,
      *          type="string"
      *      ),
-     *      @SWG\parameter(
+     *      @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,

@@ -17,12 +17,12 @@ class nilaiController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/nilai",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Nilai resources.",
      *      produces={"application/json"},
      *      tags={"nilai"},
      *      @SWG\Response(
      *          response=200,
-     *          description="nilai collection.",
+     *          description="Nilai collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/nilai")
@@ -76,13 +76,13 @@ class nilaiController extends Controller
      * @return \Illuminate\Http\Response
      *   @SWG\Post(
      *      path="/api/v1/nilai",
-     *      summary="Data nilai",
+     *      summary="Data Nilai",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"Nilai"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data nilai.",
+     *          description="Data Nilai.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -262,12 +262,12 @@ class nilaiController extends Controller
      * @return \Illuminate\Http\Response
      * @SWG\Delete(
      *      path="/api/v1/nilai/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Nilai resource.",
      *      produces={"application/json"},
      *      tags={"Nilai"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Nilai resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

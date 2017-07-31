@@ -14,12 +14,12 @@ class ruangController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/ruang",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Ruang resources.",
      *      produces={"application/json"},
-     *      tags={"Ruang"},
+     *      tags={"ruang"},
      *      @SWG\Response(
      *          response=200,
-     *          description="ruang collection.",
+     *          description="Ruang collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/ruang")
@@ -61,13 +61,13 @@ class ruangController extends Controller
      *
      *   @SWG\Post(
      *      path="/api/v1/ruang",
-     *      summary="Data ruang",
+     *      summary="Data Ruang",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"Ruang"},
+     *      tags={"ruang"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data ruang.",
+     *          description="Data Ruang.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -148,12 +148,12 @@ class ruangController extends Controller
      *
      * @SWG\Delete(
      *      path="/api/v1/ruang/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Ruang resource.",
      *      produces={"application/json"},
      *      tags={"Ruang"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Ruang resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

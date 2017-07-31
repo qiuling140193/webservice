@@ -20,9 +20,9 @@ class MahasiswaController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/mahasiswa",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Mahasiswa resources.",
      *      produces={"application/json"},
-     *      tags={"Mahasiswa"},
+     *      tags={"mahasiswa"},
      *      @SWG\Response(
      *          response=200,
      *          description="Mahasiswa collection.",
@@ -261,12 +261,12 @@ class MahasiswaController extends Controller
     /**
      *  @SWG\Delete(
      *      path="/api/v1/mahasiswa/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Mahasiswa resource.",
      *      produces={"application/json"},
      *      tags={"mahasiswa"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Mahasiswa resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

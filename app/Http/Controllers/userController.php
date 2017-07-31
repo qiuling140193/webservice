@@ -65,10 +65,10 @@ class userController extends Controller
      *      summary="Data user",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"User"},
+     *      tags={"user"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data user.",
+     *          description="Data User.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -189,12 +189,12 @@ class userController extends Controller
      *
      * @SWG\Delete(
      *      path="/api/v1/user/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the User resource.",
      *      produces={"application/json"},
      *      tags={"User"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="User resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

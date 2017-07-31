@@ -14,7 +14,7 @@ class krsController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/krs",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of KRS resources.",
      *      produces={"application/json"},
      *      tags={"krs"},
      *      @SWG\Response(
@@ -52,13 +52,13 @@ class krsController extends Controller
 
         /**    @SWG\Post(
      *      path="/api/v1/krs",
-     *      summary="Data krs",
+     *      summary="Data KRS",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"krs"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data krs.",
+     *          description="Data KRS.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -142,12 +142,12 @@ class krsController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/krs/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the KRS resource.",
      *      produces={"application/json"},
      *      tags={"krs"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="KRS resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

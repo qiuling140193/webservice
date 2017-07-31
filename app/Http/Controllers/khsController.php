@@ -13,12 +13,12 @@ class khsController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/khs",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of KHS resources.",
      *      produces={"application/json"},
-     *      tags={"khs"},
+     *      tags={"KHS"},
      *      @SWG\Response(
      *          response=200,
-     *          description="khs collection.",
+     *          description="KHS collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/khs")
@@ -58,7 +58,7 @@ class khsController extends Controller
      *      tags={"khs"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data khs.",
+     *          description="Data KHS.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -193,12 +193,12 @@ class khsController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/khs/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the KHS resource.",
      *      produces={"application/json"},
-     *      tags={"khs"},
+     *      tags={"KHS"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="KHS resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

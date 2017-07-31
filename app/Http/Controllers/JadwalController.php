@@ -86,50 +86,50 @@ class JadwalController extends Controller
      *          description="Unauthorized action.",
      *      ),
      
-     *      @SWG\parameter(
+     *      @SWG\Parameter(
      *          name="id",
      *          in="formData",
      *          required=false,
      *          type="integer",
      *          format="int32"
      *      ),
-     *      @SWG\parameter(
+     *      @SWG\Parameter(
      *          name="semester",
      *          in="formData",
      *          required=true,
      *          type="string"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="hari",
      *          in="formData",
      *          required=true,
      *          type="string"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="id_jurusan",
      *          in="formData",
      *          required=true,
      *          type="integer"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="id_dosen",
      *          in="formData",
      *          required=true,
      *          type="integer"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="id_kelas",
      *          in="formData",
      *          required=true,
      *          type="integer"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="id_jam",
      *          in="formData",
      *          required=true,
      *          type="integer"
      *      ),
-     *     @SWG\parameter(
+     *     @SWG\Parameter(
      *          name="id_matakuliah",
      *          in="formData",
      *          required=true,
@@ -218,12 +218,12 @@ class JadwalController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/jadwal/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Jadwal resource.",
      *      produces={"application/json"},
      *      tags={"Jadwal"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Jadwal resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,
@@ -239,7 +239,7 @@ class JadwalController extends Controller
      *          required=true,
      *          type="string"
      *      ),
-     *      @SWG\parameter(
+     *      @SWG\Parameter(
      *          name="id",
      *          in="path",
      *          required=true,

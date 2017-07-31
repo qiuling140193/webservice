@@ -11,12 +11,12 @@ class MataKuliahController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/matakuliah",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Mata Kuliah resources.",
      *      produces={"application/json"},
      *      tags={"Matakuliah"},
      *      @SWG\Response(
      *          response=200,
-     *          description="matakuliah collection.",
+     *          description="Matakuliah collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/matakuliah")
@@ -50,13 +50,13 @@ class MataKuliahController extends Controller
 
         /**    @SWG\Post(
      *      path="/api/v1/matakuliah",
-     *      summary="Data matakuliah",
+     *      summary="Data Matakuliah",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"Matakuliah"},
+     *      tags={"matakuliah"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data matakuliah.",
+     *          description="Data Matakuliah.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"
@@ -140,12 +140,12 @@ class MataKuliahController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/matakuliah/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Matakuliah resource.",
      *      produces={"application/json"},
-     *      tags={"Matakuliah"},
+     *      tags={"matakuliah"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Mata Kuliah resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,

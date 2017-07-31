@@ -14,12 +14,12 @@ class JurusanController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/jurusan",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Jurusan resources.",
      *      produces={"application/json"},
      *      tags={"Jurusan"},
      *      @SWG\Response(
      *          response=200,
-     *          description="jurusan collection.",
+     *          description="Jurusan collection.",
      *          @SWG\Schema(
      *               type="array",
      *               @SWG\Items(ref="#/definitions/jurusan")
@@ -158,12 +158,12 @@ class JurusanController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/jurusan/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Jurusan resource.",
      *      produces={"application/json"},
      *      tags={"Jurusan"},
      *      @SWG\Response(
      *          response=204,
-     *          description="Mediafile resource delete."
+     *          description="Jurusan resource delete."
      *      ),
      *      @SWG\Response(
      *          response=401,
