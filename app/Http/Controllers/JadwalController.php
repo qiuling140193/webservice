@@ -17,6 +17,33 @@ use App\mahasiswa;
 
 class JadwalController extends Controller
 {
+
+    /**
+     * @SWG\Get(
+     *      path="/api/v1/jadwal",
+     *      summary="Retrieves the collection of MediaFile resources.",
+     *      produces={"application/json"},
+     *      tags={"Jadwal"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="jadwal collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/jadwal")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
+     */ 
     public function index()
     {
         $user=Auth::user();
@@ -40,6 +67,76 @@ class JadwalController extends Controller
         }
     }
 
+     /**    @SWG\Post(
+     *      path="/api/v1/jadwal",
+     *      summary="Data jadwal",
+     *      produces={"application/json"},
+     *      consumes={"multipart/form-data"},
+     *      tags={"Jadwal"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Data jadwal.",
+     *          @SWG\Property(
+     *              property="token",
+     *              type="string"
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="formData",
+     *          required=false,
+     *          type="integer",
+     *          format="int32"
+     *      ),
+     *      @SWG\parameter(
+     *          name="semester",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\parameter(
+     *          name="hari",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_jurusan",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_dosen",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_kelas",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_jam",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_matakuliah",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     * )
+    */
      public function store(Request $request)
     {
 
@@ -119,6 +216,37 @@ class JadwalController extends Controller
 
     }
 
+    /**  @SWG\Delete(
+     *      path="/api/v1/jadwal/{id}",
+     *      summary="Removes the mediafile resource.",
+     *      produces={"application/json"},
+     *      tags={"Jadwal"},
+     *      @SWG\Response(
+     *          response=204,
+     *          description="Mediafile resource delete."
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized Action."
+     *      ),
+     *      @SWG\Response(
+     *          response=404,
+     *          description="Resource not found."
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */ 
     public function destroy($id)
     {
             if($user->id_level!=1){

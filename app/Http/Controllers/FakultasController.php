@@ -12,6 +12,32 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class FakultasController extends Controller
 {
+    /**
+     * @SWG\Get(
+     *      path="/api/v1/fakultas",
+     *      summary="Retrieves the collection of MediaFile resources.",
+     *      produces={"application/json"},
+     *      tags={"Fakultas"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="fakultas collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/fakultas")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
+     */
     public function index()
     {
         $user=Auth::user();
@@ -28,7 +54,40 @@ class FakultasController extends Controller
     	$fakultas = fakultas::paginate();
         return response()->json($fakultas->toArray());
     }
-
+   /**      @SWG\Post(
+     *      path="/api/v1/fakultas",
+     *      summary="Data fakultas",
+     *      produces={"application/json"},
+     *      consumes={"multipart/form-data"},
+     *      tags={"Fakultas"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Data fakultas.",
+     *          @SWG\Property(
+     *              property="token",
+     *              type="string"
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="formData",
+     *          required=false,
+     *          type="integer",
+     *          format="int32"
+     *      ),
+     *      @SWG\parameter(
+     *          name="nama",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     * )
+    */
      public function store(Request $request)
     {
         $user=Auth::user();
@@ -93,7 +152,37 @@ class FakultasController extends Controller
         }
     }
 
-
+/**  @SWG\Delete(
+     *      path="/api/v1/fakultas/{id}",
+     *      summary="Removes the mediafile resource.",
+     *      produces={"application/json"},
+     *      tags={"Fakultas"},
+     *      @SWG\Response(
+     *          response=204,
+     *          description="Mediafile resource delete."
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized Action."
+     *      ),
+     *      @SWG\Response(
+     *          response=404,
+     *          description="Resource not found."
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function destroy($id)
     {
 

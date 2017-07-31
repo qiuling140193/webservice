@@ -5,13 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\kelas;
 
-class RuangController extends Controller
+class ruangController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     *
+     * @SWG\Get(
+     *      path="/api/v1/ruang",
+     *      summary="Retrieves the collection of MediaFile resources.",
+     *      produces={"application/json"},
+     *      tags={"Ruang"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="ruang collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/ruang")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      )
+     * )
+     */ 
     public function index()
     {
         $kelas=kelas::paginate(5);
@@ -33,7 +58,39 @@ class RuangController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     *
+     *   @SWG\Post(
+     *      path="/api/v1/ruang",
+     *      summary="Data ruang",
+     *      produces={"application/json"},
+     *      consumes={"multipart/form-data"},
+     *      tags={"Ruang"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Data ruang.",
+     *          @SWG\Property(
+     *              property="token",
+     *              type="string"
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),  
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="formData",
+     *          required=false,
+     *          type="integer",
+     *          format="int32"
+     *      ),
+     *     @SWG\parameter(
+     *          name="nama",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     * )
+    */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -88,6 +145,37 @@ class RuangController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Delete(
+     *      path="/api/v1/ruang/{id}",
+     *      summary="Removes the mediafile resource.",
+     *      produces={"application/json"},
+     *      tags={"Ruang"},
+     *      @SWG\Response(
+     *          response=204,
+     *          description="Mediafile resource delete."
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized Action."
+     *      ),
+     *      @SWG\Response(
+     *          response=404,
+     *          description="Resource not found."
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
      */
     public function destroy($id)
     {

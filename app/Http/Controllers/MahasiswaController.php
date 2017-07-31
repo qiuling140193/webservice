@@ -260,10 +260,10 @@ class MahasiswaController extends Controller
 
     /**
      *  @SWG\Delete(
-     *      path="/api/v1/dosen/{id}",
+     *      path="/api/v1/mahasiswa/{id}",
      *      summary="Removes the mediafile resource.",
      *      produces={"application/json"},
-     *      tags={"dosen"},
+     *      tags={"mahasiswa"},
      *      @SWG\Response(
      *          response=204,
      *          description="Mediafile resource delete."
