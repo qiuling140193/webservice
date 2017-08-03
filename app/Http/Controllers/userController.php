@@ -59,7 +59,64 @@ class userController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     *
+     *   @SWG\Post(
+     *      path="/api/v1/user",
+     *      summary="Data user",
+     *      produces={"application/json"},
+     *      consumes={"multipart/form-data"},
+     *      tags={"user"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Data User.",
+     *          @SWG\Property(
+     *              property="token",
+     *              type="string"
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),  
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="formData",
+     *          required=false,
+     *          type="integer",
+     *          format="int32"
+     *      ),
+     *     @SWG\parameter(
+     *          name="name",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\parameter(
+     *          name="email",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\parameter(
+     *          name="password",
+     *          in="formData",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *     @SWG\parameter(
+     *          name="id_level",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     *     @SWG\parameter(
+     *          name="profile_id",
+     *          in="formData",
+     *          required=true,
+     *          type="integer"
+     *      ),
+     * )
+    */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -129,6 +186,37 @@ class userController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Delete(
+     *      path="/api/v1/user/{id}",
+     *      summary="Removes the User resource.",
+     *      produces={"application/json"},
+     *      tags={"User"},
+     *      @SWG\Response(
+     *          response=204,
+     *          description="User resource delete."
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized Action."
+     *      ),
+     *      @SWG\Response(
+     *          response=404,
+     *          description="Resource not found."
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
      */
     public function destroy($id)
     {
