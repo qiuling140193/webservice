@@ -72,75 +72,41 @@ class adminController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     *
-     * @SWG\Post(
-     *      path="/api/v1/admin",
-     *      summary="Data admin",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Admin"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data admin.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),
-     
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *      @SWG\parameter(
-     *          name="nama",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tempat_lahir",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tanggal_lahir",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="gender",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="phone",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="email",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     * )
-    */
+    * @SWG\Post(
+    *      path="/api/v1/admin",
+    *      summary="Data Admin",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Admin"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Admin",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
     public function store(Request $request)
     {
          $user=Auth::user();
@@ -176,6 +142,36 @@ class adminController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+      * @SWG\Get(
+     *      path="/api/v1/admin/{id}",
+     *      summary="Retrieves the collection of Admin resources.",
+     *      produces={"application/json"},
+     *      tags={"Admin"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Admin collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/admin")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
      */
     public function show($id)
     {
@@ -202,13 +198,48 @@ class adminController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     /**
+     * @SWG\Put(
+    *      path="/api/v1/admin/{id}",
+    *      summary="Data Admin",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Admin"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Admin",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
     public function update(Request $request, $id)
     {
         $user=Auth::user();

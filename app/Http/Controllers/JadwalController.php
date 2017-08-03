@@ -21,7 +21,7 @@ class JadwalController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/jadwal",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Jadwal resources.",
      *      produces={"application/json"},
      *      tags={"Jadwal"},
      *      @SWG\Response(
@@ -67,76 +67,42 @@ class JadwalController extends Controller
         }
     }
 
-     /**    @SWG\Post(
-     *      path="/api/v1/jadwal",
-     *      summary="Data jadwal",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Jadwal"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data jadwal.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),
-     
-     *      @SWG\Parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *      @SWG\Parameter(
-     *          name="semester",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="hari",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="id_jurusan",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="id_dosen",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="id_kelas",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="id_jam",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\Parameter(
-     *          name="id_matakuliah",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     * )
-    */
+     /**
+    * @SWG\Post(
+    *      path="/api/v1/jadwal",
+    *      summary="Data Jadwal",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Jadwal"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Jadwal",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
      public function store(Request $request)
     {
 
@@ -173,14 +139,84 @@ class JadwalController extends Controller
         }
 
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/jadwal/{id}",
+     *      summary="Retrieves the collection of Jadwal resources.",
+     *      produces={"application/json"},
+     *      tags={"Jadwal"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Jadwal collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/jadwal")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function show($id)
     {
     	$jadwal = jdwl::find($id);
         return response()->json($jadwal->toArray());
     }
 
-
+    /**
+    * @SWG\Put(
+    *      path="/api/v1/jadwal",
+    *      summary="Data Jadwal",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Jadwal"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Jadwal",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+    */
     public function update(Request $request, $id)
     {
     	 $user=Auth::user();

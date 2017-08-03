@@ -50,75 +50,42 @@ class khsController extends Controller
         }
     }
 
-        /**    @SWG\Post(
-     *      path="/api/v1/khs",
-     *      summary="Data khs",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"KHS"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data KHS.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),  
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_mahasiswa",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_matkul",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *      @SWG\parameter(
-     *          name="absensi",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tugas",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="uts",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="uas",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="grade",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     * )
-    */
+        /**
+    * @SWG\Post(
+    *      path="/api/v1/khs",
+    *      summary="Data KHS",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"KHS"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data KHS",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
 
      public function store(Request $request)
     {
@@ -151,14 +118,90 @@ class khsController extends Controller
             return response()->json($khs);
         }
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/khs/{id}",
+     *      summary="Retrieves the collection of KHS resources.",
+     *      produces={"application/json"},
+     *      tags={"KHS"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Jurusan collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/khs")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function show($id)
     {
         
     	$khs = khs::find($id);
         return response()->json($khs->toArray());
     }
-
+/**
+     * @SWG\Put(
+    *      path="/api/v1/khs/{id}",
+    *      summary="Data KHS",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"KHS"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data KHS",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
 
     public function update(Request $request, $id)
     {

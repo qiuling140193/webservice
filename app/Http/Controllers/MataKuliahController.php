@@ -13,7 +13,7 @@ class MataKuliahController extends Controller
      *      path="/api/v1/matakuliah",
      *      summary="Retrieves the collection of Mata Kuliah resources.",
      *      produces={"application/json"},
-     *      tags={"Matakuliah"},
+     *      tags={"MataKuliah"},
      *      @SWG\Response(
      *          response=200,
      *          description="Matakuliah collection.",
@@ -48,45 +48,42 @@ class MataKuliahController extends Controller
         }
     }
 
-        /**    @SWG\Post(
-     *      path="/api/v1/matakuliah",
-     *      summary="Data Matakuliah",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Matakuliah"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data Matakuliah.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),  
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *     @SWG\parameter(
-     *          name="nama",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\parameter(
-     *          name="sks",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     * )
-    */
+       /**
+    * @SWG\Post(
+    *      path="/api/v1/matakuliah",
+    *      summary="Data MataKuliah",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"MataKuliah"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data MataKuliah",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
      public function store(Request $request)
     {
         $user=Auth::user();
@@ -109,6 +106,42 @@ class MataKuliahController extends Controller
         }
     }
 
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/matakuliah/{id}",
+     *      summary="Retrieves the collection of MataKuliah resources.",
+     *      produces={"application/json"},
+     *      tags={"MataKuliah"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Jurusan collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/matakuliah")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function show($id)
     {
     	$matakuliah = matakuliah::find($id);
@@ -116,7 +149,48 @@ class MataKuliahController extends Controller
 
     }
 
-
+    /**
+    * @SWG\Put(
+    *      path="/api/v1/matakuliah/{id}",
+    *      summary="Data MataKuliah",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"MataKuliah"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data KRS",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
     public function update(Request $request, $id)
     {
         $user=Auth::user();
@@ -142,7 +216,7 @@ class MataKuliahController extends Controller
      *      path="/api/v1/matakuliah/{id}",
      *      summary="Removes the Matakuliah resource.",
      *      produces={"application/json"},
-     *      tags={"Matakuliah"},
+     *      tags={"MataKuliah"},
      *      @SWG\Response(
      *          response=204,
      *          description="Mata Kuliah resource delete."

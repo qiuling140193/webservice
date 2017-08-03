@@ -53,45 +53,42 @@ class JurusanController extends Controller
         }
     }
 
-    /**    @SWG\Post(
-     *      path="/api/v1/jurusan",
-     *      summary="Data jurusan",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Jurusan"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data jurusan.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *      @SWG\parameter(
-     *          name="nama",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_fakultas",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     * )
-    */
+    /**
+    * @SWG\Post(
+    *      path="/api/v1/jurusan",
+    *      summary="Data Jurusan",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Jurusan"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Jurusan",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
      public function store(Request $request)
     {
         $user=Auth::user();
@@ -120,7 +117,42 @@ class JurusanController extends Controller
             return response()->json($jurusan);
         }
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/jurusan/{id}",
+     *      summary="Retrieves the collection of Jurusan resources.",
+     *      produces={"application/json"},
+     *      tags={"Jurusan"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Jurusan collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/jurusan")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function show(Request $request)
     {
         $user=Auth::user();
@@ -135,7 +167,48 @@ class JurusanController extends Controller
             return response()->json($jurusan->toArray());
         }
     }
-
+     /**
+     * @SWG\Put(
+    *      path="/api/v1/jurusan/{id}",
+    *      summary="Data Jurusan",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Jurusan"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Jurusan",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
 
     public function update(Request $request, $id)
     {

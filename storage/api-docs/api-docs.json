@@ -3,7 +3,7 @@
     "info": {
         "title": "Sample API",
         "contact": {
-            "name": "Sri Wardani",
+            "name": "Erik Alexander, Friscilia Sutanto, Sri Wardani",
             "url": "https://uph.edu"
         },
         "version": "1.0"
@@ -56,9 +56,17 @@
                 "tags": [
                     "Dosen"
                 ],
-                "summary": "Retrieves the collection of MediaFile resources.",
+                "summary": "Retrieves the collection of Dosen resources.",
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -94,10 +102,13 @@
                         "type": "string"
                     },
                     {
-                        "name": "id",
-                        "in": "path",
+                        "name": "Data Dosen",
+                        "in": "body",
                         "required": true,
-                        "type": "integer"
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -115,6 +126,90 @@
             }
         },
         "/api/v1/dosen/{id}": {
+            "get": {
+                "tags": [
+                    "Dosen"
+                ],
+                "summary": "Retrieves the collection of Dosen resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dosen collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dosen"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Dosen"
+                ],
+                "summary": "Data Dosen",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Dosen",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Dosen"
@@ -155,7 +250,7 @@
                 "tags": [
                     "Fakultas"
                 ],
-                "summary": "Retrieves the collection of MediaFile resources.",
+                "summary": "Retrieves the collection of Fakultas resources.",
                 "produces": [
                     "application/json"
                 ],
@@ -186,31 +281,33 @@
                 "tags": [
                     "Fakultas"
                 ],
-                "summary": "Data fakultas",
+                "summary": "Data Fakultas",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
                     },
                     {
-                        "name": "nama",
-                        "in": "formData",
+                        "name": "Data Fakultas",
+                        "in": "body",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data fakultas.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -223,6 +320,90 @@
             }
         },
         "/api/v1/fakultas/{id}": {
+            "get": {
+                "tags": [
+                    "Fakultas"
+                ],
+                "summary": "Retrieves the collection of Fakultas resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Fakultas collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dosen"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Fakultas"
+                ],
+                "summary": "Data Dosen",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data fakultas",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Fakultas"
@@ -263,7 +444,7 @@
                 "tags": [
                     "Jadwal"
                 ],
-                "summary": "Retrieves the collection of MediaFile resources.",
+                "summary": "Retrieves the collection of Jadwal resources.",
                 "produces": [
                     "application/json"
                 ],
@@ -290,71 +471,78 @@
                     }
                 }
             },
-            "post": {
+            "put": {
                 "tags": [
                     "Jadwal"
                 ],
-                "summary": "Data jadwal",
+                "summary": "Data Jadwal",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "semester",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "hari",
-                        "in": "formData",
+                        "name": "Data Jadwal",
+                        "in": "body",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
-                    },
-                    {
-                        "name": "id_jurusan",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_dosen",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_kelas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_jam",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_matakuliah",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data jadwal.",
+                        "description": "Users Token.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Jadwal"
+                ],
+                "summary": "Data Jadwal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Data Jadwal",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -367,6 +555,43 @@
             }
         },
         "/api/v1/jadwal/{id}": {
+            "get": {
+                "tags": [
+                    "Jadwal"
+                ],
+                "summary": "Retrieves the collection of Jadwal resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jadwal collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/jadwal"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Jadwal"
@@ -438,37 +663,33 @@
                 "tags": [
                     "Jurusan"
                 ],
-                "summary": "Data jurusan",
+                "summary": "Data Jurusan",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "nama",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "id_fakultas",
-                        "in": "formData",
+                        "name": "Data Jurusan",
+                        "in": "body",
                         "required": true,
-                        "type": "integer"
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data jurusan.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -481,6 +702,90 @@
             }
         },
         "/api/v1/jurusan/{id}": {
+            "get": {
+                "tags": [
+                    "Jurusan"
+                ],
+                "summary": "Retrieves the collection of Jurusan resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jurusan collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/jurusan"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Jurusan"
+                ],
+                "summary": "Data Jurusan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Jurusan",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Jurusan"
@@ -519,7 +824,7 @@
         "/api/v1/mahasiswa": {
             "get": {
                 "tags": [
-                    "mahasiswa"
+                    "Mahasiswa"
                 ],
                 "summary": "Retrieves the collection of Mahasiswa resources.",
                 "produces": [
@@ -649,6 +954,142 @@
             }
         },
         "/api/v1/mahasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Retrieves the collection of Mahasiswa resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "mahasiswa collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mahasiswa"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Data Mahasiswa",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tempat_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tanggal_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alamat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tahun",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_fakultas",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_jurusan",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Mahasiswa.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Mahasiswa"
@@ -687,7 +1128,7 @@
         "/api/v1/matakuliah": {
             "get": {
                 "tags": [
-                    "Matakuliah"
+                    "MataKuliah"
                 ],
                 "summary": "Retrieves the collection of Mata Kuliah resources.",
                 "produces": [
@@ -718,39 +1159,35 @@
             },
             "post": {
                 "tags": [
-                    "Matakuliah"
+                    "MataKuliah"
                 ],
-                "summary": "Data Matakuliah",
+                "summary": "Data MataKuliah",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "nama",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "sks",
-                        "in": "formData",
+                        "name": "Data MataKuliah",
+                        "in": "body",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data Matakuliah.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -763,9 +1200,93 @@
             }
         },
         "/api/v1/matakuliah/{id}": {
+            "get": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Retrieves the collection of MataKuliah resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jurusan collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/matakuliah"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Data MataKuliah",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data KRS",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
-                    "Matakuliah"
+                    "MataKuliah"
                 ],
                 "summary": "Removes the Matakuliah resource.",
                 "produces": [
@@ -898,39 +1419,42 @@
                         "description": "Unauthorized action."
                     }
                 }
-            },
+            }
+        },
+        "/api/kelas": {
             "post": {
                 "tags": [
                     "Ruang"
                 ],
                 "summary": "Data Ruang",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
                     },
                     {
-                        "name": "nama",
-                        "in": "formData",
+                        "name": "Data Kelas",
+                        "in": "body",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data Ruang.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
-                            "description": "Store a newly created resource in storage.",
                             "type": "string"
                         }
                     },
@@ -941,6 +1465,90 @@
             }
         },
         "/api/v1/kelas/{id}": {
+            "get": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Retrieves the collection of Ruang resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ruang collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/kelas"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Data Ruang",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Ruang",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Ruang"
@@ -1012,64 +1620,35 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Data admin",
+                "summary": "Data Admin",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "nama",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "tempat_lahir",
-                        "in": "formData",
+                        "name": "Data Admin",
+                        "in": "body",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tanggal_lahir",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "gender",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "phone",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "email",
-                        "in": "formData",
-                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data admin.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
-                            "description": "Store a newly created resource in storage.",
                             "type": "string"
                         }
                     },
@@ -1080,6 +1659,90 @@
             }
         },
         "/api/v1/admin/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Retrieves the collection of Admin resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/admin"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Data Admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Admin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Admin"
@@ -1151,67 +1814,33 @@
                 "tags": [
                     "KHS"
                 ],
-                "summary": "Data khs",
+                "summary": "Data KHS",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "id_mahasiswa",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_matkul",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "absensi",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "tugas",
-                        "in": "formData",
+                        "name": "Data KHS",
+                        "in": "body",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "uts",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "uas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "grade",
-                        "in": "formData",
-                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data KHS.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -1224,6 +1853,90 @@
             }
         },
         "/api/v1/khs/{id}": {
+            "get": {
+                "tags": [
+                    "KHS"
+                ],
+                "summary": "Retrieves the collection of KHS resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jurusan collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/khs"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "KHS"
+                ],
+                "summary": "Data KHS",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data KHS",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "KHS"
@@ -1297,35 +2010,31 @@
                 ],
                 "summary": "Data KRS",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
                     },
                     {
-                        "name": "id_mahasiswa",
-                        "in": "formData",
+                        "name": "Data KRS",
+                        "in": "body",
                         "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_matkul",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data KRS.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
                             "type": "string"
@@ -1338,6 +2047,90 @@
             }
         },
         "/api/v1/krs/{id}": {
+            "get": {
+                "tags": [
+                    "KRS"
+                ],
+                "summary": "Retrieves the collection of KRS resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jurusan collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/krs"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "KRS"
+                ],
+                "summary": "Data KRS",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data KRS",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "KRS"
@@ -1404,87 +2197,42 @@
                         "description": "Unauthorized action."
                     }
                 }
-            },
+            }
+        },
+        "/api/nilai": {
             "post": {
                 "tags": [
                     "Nilai"
                 ],
                 "summary": "Data Nilai",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "semester",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "id_dosen",
-                        "in": "formData",
+                        "name": "Data Jurusan",
+                        "in": "body",
                         "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_matkul",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "id_mahasiswa",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "absensi",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tugas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "uts",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "uas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "grade",
-                        "in": "formData",
-                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data Nilai.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
-                            "description": "Store a newly created resource in storage.",
                             "type": "string"
                         }
                     },
@@ -1495,6 +2243,90 @@
             }
         },
         "/api/v1/nilai/{id}": {
+            "get": {
+                "tags": [
+                    "Nilai"
+                ],
+                "summary": "Retrieves the collection of Nilai resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Nilai collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/nilai"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Nilai"
+                ],
+                "summary": "Data Nilai",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Nilai",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Nilai"
@@ -1561,63 +2393,42 @@
                         "description": "Unauthorized action."
                     }
                 }
-            },
+            }
+        },
+        "/api/user": {
             "post": {
                 "tags": [
                     "User"
                 ],
-                "summary": "Data user",
+                "summary": "Data User",
                 "consumes": [
-                    "multipart/form-data"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "name",
-                        "in": "formData",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "email",
-                        "in": "formData",
+                        "name": "Data User",
+                        "in": "body",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
                         "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id_level",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "profile_id",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Data User.",
+                        "description": "Users Token.",
                         "schema": {
                             "property": "token",
-                            "description": "Store a newly created resource in storage.",
                             "type": "string"
                         }
                     },
@@ -1628,6 +2439,90 @@
             }
         },
         "/api/v1/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Retrieves the collection of User resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usser collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/user"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Data User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data User",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "User"

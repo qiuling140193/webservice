@@ -50,45 +50,42 @@ class krsController extends Controller
         }
     }
 
-        /**    @SWG\Post(
-     *      path="/api/v1/krs",
-     *      summary="Data KRS",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"KRS"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data KRS.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),  
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_mahasiswa",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_matkul",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     * )
-    */
+       /**
+    * @SWG\Post(
+    *      path="/api/v1/krs",
+    *      summary="Data KRS",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"KRS"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data KRS",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
      public function store(Request $request)
     {
              $user=Auth::user();
@@ -110,13 +107,89 @@ class krsController extends Controller
             return response()->json($krs);
         }
     }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/krs/{id}",
+     *      summary="Retrieves the collection of KRS resources.",
+     *      produces={"application/json"},
+     *      tags={"KRS"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Jurusan collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/krs")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
     public function show($id)
     {
     	$krs = krs::find($id);
         return response()->json($krs->toArray());
     }
-
+/**
+    * @SWG\Put(
+    *      path="/api/v1/krs/{id}",
+    *      summary="Data KRS",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"KRS"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data KRS",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
 
     public function update(Request $request, $id)
     {

@@ -18,7 +18,7 @@ use Auth;
 *		version="1.0",
 *		title="Sample API",
 *		@SWG\Contact(
-*			name="Sri Wardani",
+*			name="Erik Alexander, Friscilia Sutanto, Sri Wardani",
 *			url="https://uph.edu"
 *		),
 *	),

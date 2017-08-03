@@ -54,69 +54,43 @@ class userController extends Controller
         //
     }
 
+    
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     *
-     *   @SWG\Post(
-     *      path="/api/v1/user",
-     *      summary="Data user",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"User"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data User.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),  
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *     @SWG\parameter(
-     *          name="name",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\parameter(
-     *          name="email",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\parameter(
-     *          name="password",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *     @SWG\parameter(
-     *          name="id_level",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     *     @SWG\parameter(
-     *          name="profile_id",
-     *          in="formData",
-     *          required=true,
-     *          type="integer"
-     *      ),
-     * )
-    */
+    * @SWG\Post(
+    *      path="/api/user",
+    *      summary="Data User",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"User"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data User",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -135,10 +109,40 @@ class userController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/user/{id}",
+     *      summary="Retrieves the collection of User resources.",
+     *      produces={"application/json"},
+     *      tags={"User"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Usser collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/user")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
      */
     public function show($id)
     {
@@ -158,12 +162,47 @@ class userController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     * @SWG\Put(
+    *      path="/api/v1/user/{id}",
+    *      summary="Data User",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"User"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data User",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
     public function update(Request $request, $id)
     {
         $this->validate($request,[

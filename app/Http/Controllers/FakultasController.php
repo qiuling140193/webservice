@@ -15,7 +15,7 @@ class FakultasController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/fakultas",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Fakultas resources.",
      *      produces={"application/json"},
      *      tags={"Fakultas"},
      *      @SWG\Response(
@@ -54,39 +54,41 @@ class FakultasController extends Controller
     	$fakultas = fakultas::paginate();
         return response()->json($fakultas->toArray());
     }
-   /**      @SWG\Post(
-     *      path="/api/v1/fakultas",
-     *      summary="Data fakultas",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Fakultas"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data fakultas.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),
-     
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=false,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *      @SWG\parameter(
-     *          name="nama",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     * )
+    /**
+    * @SWG\Post(
+    *      path="/api/v1/fakultas",
+    *      summary="Data Fakultas",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Fakultas"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Users Token.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data Fakultas",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
     */
      public function store(Request $request)
     {
@@ -114,7 +116,42 @@ class FakultasController extends Controller
                 return response()->json($fakultas);
             }
         }
-
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *      path="/api/v1/fakultas/{id}",
+     *      summary="Retrieves the collection of Fakultas resources.",
+     *      produces={"application/json"},
+     *      tags={"Fakultas"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="Fakultas collection.",
+     *          @SWG\Schema(
+     *               type="array",
+     *               @SWG\Items(ref="#/definitions/dosen")
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *          response=401,
+     *          description="Unauthorized action.",
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
+     *      @SWG\parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *      )
+     *  )
+     */
 
     public function show($id)
     {
@@ -130,7 +167,48 @@ class FakultasController extends Controller
             return response()->json($fakultas->toArray());
         }   
     }
-
+ /**
+     * @SWG\Put(
+    *      path="/api/v1/fakultas/{id}",
+    *      summary="Data Dosen",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Fakultas"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
+    *      @SWG\parameter(
+    *          name="Data fakultas",
+    *          in="body",
+    *          required=true,
+    *          type="string",
+    *          @SWG\Schema(
+    *              type="string"
+    *          )
+    *      )
+    * )
+   */
 
     public function update(Request $request, $id)
     {
