@@ -53,6 +53,7 @@ class JurusanController extends Controller
         }
     }
 
+
     /**
     * @SWG\Post(
     *      path="/api/v1/jurusan",
@@ -89,6 +90,7 @@ class JurusanController extends Controller
     *      )
     * )
    */
+
      public function store(Request $request)
     {
         $user=Auth::user();

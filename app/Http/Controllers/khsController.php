@@ -50,6 +50,7 @@ class khsController extends Controller
         }
     }
 
+
         /**
     * @SWG\Post(
     *      path="/api/v1/khs",
@@ -86,6 +87,7 @@ class khsController extends Controller
     *      )
     * )
    */
+
 
      public function store(Request $request)
     {

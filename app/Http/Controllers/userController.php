@@ -91,6 +91,7 @@ class userController extends Controller
     *      )
     * )
    */
+
     public function store(Request $request)
     {
         $this->validate($request,[

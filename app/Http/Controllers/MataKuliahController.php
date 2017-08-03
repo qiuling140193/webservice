@@ -48,6 +48,7 @@ class MataKuliahController extends Controller
         }
     }
 
+
        /**
     * @SWG\Post(
     *      path="/api/v1/matakuliah",
@@ -84,6 +85,7 @@ class MataKuliahController extends Controller
     *      )
     * )
    */
+
      public function store(Request $request)
     {
         $user=Auth::user();
@@ -214,7 +216,7 @@ class MataKuliahController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/matakuliah/{id}",
-     *      summary="Removes the Matakuliah resource.",
+     *      summary="Removes the Mata Kuliah resource.",
      *      produces={"application/json"},
      *      tags={"MataKuliah"},
      *      @SWG\Response(

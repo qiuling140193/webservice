@@ -67,6 +67,7 @@ class JadwalController extends Controller
         }
     }
 
+
      /**
     * @SWG\Post(
     *      path="/api/v1/jadwal",
@@ -103,6 +104,7 @@ class JadwalController extends Controller
     *      )
     * )
    */
+
      public function store(Request $request)
     {
 
