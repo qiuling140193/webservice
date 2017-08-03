@@ -55,7 +55,7 @@ class JurusanController extends Controller
 
     /**    @SWG\Post(
      *      path="/api/v1/jurusan",
-     *      summary="Data jurusan",
+     *      summary="Data Jurusan",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"Jurusan"},

@@ -62,7 +62,7 @@ class userController extends Controller
      *
      *   @SWG\Post(
      *      path="/api/v1/user",
-     *      summary="Data user",
+     *      summary="Data User",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"User"},

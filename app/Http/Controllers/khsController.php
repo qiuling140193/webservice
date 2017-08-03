@@ -52,7 +52,7 @@ class khsController extends Controller
 
         /**    @SWG\Post(
      *      path="/api/v1/khs",
-     *      summary="Data khs",
+     *      summary="Data KHS",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"KHS"},

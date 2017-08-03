@@ -21,7 +21,7 @@ class DosenController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/dosen",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Dosen resources.",
      *      produces={"application/json"},
      *      tags={"Dosen"},
      *      @SWG\Response(

@@ -50,7 +50,7 @@ class MataKuliahController extends Controller
 
         /**    @SWG\Post(
      *      path="/api/v1/matakuliah",
-     *      summary="Data Matakuliah",
+     *      summary="Data Mata Kuliah",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"Matakuliah"},
@@ -140,7 +140,7 @@ class MataKuliahController extends Controller
 
     /**  @SWG\Delete(
      *      path="/api/v1/matakuliah/{id}",
-     *      summary="Removes the Matakuliah resource.",
+     *      summary="Removes the Mata Kuliah resource.",
      *      produces={"application/json"},
      *      tags={"Matakuliah"},
      *      @SWG\Response(

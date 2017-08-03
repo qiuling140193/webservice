@@ -85,7 +85,7 @@ class adminController extends Controller
      *      tags={"Admin"},
      *      @SWG\Response(
      *          response=200,
-     *          description="Data admin.",
+     *          description="Data Admin.",
      *          @SWG\Property(
      *              property="token",
      *              type="string"

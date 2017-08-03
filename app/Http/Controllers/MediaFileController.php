@@ -16,7 +16,7 @@ class MediaFileController extends Controller
      *      path="/api/v1/mediafiles",
      *      summary="Retrieves the collection of MediaFile resources.",
      *      produces={"application/json"},
-     *      tags={"mediafiles"},
+     *      tags={"Mediafiles"},
      *      @SWG\Response(
      *          response=200,
      *          description="Mediafiles collection.",
@@ -119,9 +119,9 @@ class MediaFileController extends Controller
      *
      *  @SWG\Delete(
      *      path="/api/v1/mediafiles/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Mediafile resource.",
      *      produces={"application/json"},
-     *      tags={"mediafiles"},
+     *      tags={"Mediafiles"},
      *      @SWG\Response(
      *          response=204,
      *          description="Mediafile resource delete."

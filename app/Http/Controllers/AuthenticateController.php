@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
      *      summary="User Login",
      *      produces={"application/json"},
      *      consumes={"application/json"},
-     *      tags={"login"},
+     *      tags={"Login"},
      *      @SWG\Response(
      *          response=200,
      *          description="Users Token.",

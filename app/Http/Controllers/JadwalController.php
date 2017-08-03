@@ -21,7 +21,7 @@ class JadwalController extends Controller
     /**
      * @SWG\Get(
      *      path="/api/v1/jadwal",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Jadwal resources.",
      *      produces={"application/json"},
      *      tags={"Jadwal"},
      *      @SWG\Response(
@@ -69,7 +69,7 @@ class JadwalController extends Controller
 
      /**    @SWG\Post(
      *      path="/api/v1/jadwal",
-     *      summary="Data jadwal",
+     *      summary="Data Jadwal",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"Jadwal"},
