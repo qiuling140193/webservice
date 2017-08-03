@@ -75,7 +75,7 @@ class ruangController extends Controller
      *      ),
      *      @SWG\Response(
      *          response=401,
-     *          description="Unauthorized action.",
+     *          description="Unauthorized action."
      *      ),  
      *      @SWG\parameter(
      *          name="id",
@@ -89,7 +89,8 @@ class ruangController extends Controller
      *          in="formData",
      *          required=true,
      *          type="string"
-     * )
+     *      )
+     *  )
     */
     public function store(Request $request)
     {

@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
+    /**
      *  @SWG\Definition(
-     *      definition="admin",
+     *      definition="fakultas",
      *      @SWG\Property(
      *          property="nama",
      *          type="string"
-     *      ),   
+     *      ), 
+     *  )  
      *      
      */
 

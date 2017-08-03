@@ -74,6 +74,7 @@ class nilaiController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
      *   @SWG\Post(
      *      path="/api/v1/nilai",
      *      summary="Data Nilai",
@@ -127,25 +128,25 @@ class nilaiController extends Controller
      *          name="absensi",
      *          in="formData",
      *          required=true,
-     *          type="string
+     *          type="string"
      *      ),
      *     @SWG\parameter(
      *          name="tugas",
      *          in="formData",
      *          required=true,
-     *          type="string
+     *          type="string"
      *      ),
      *     @SWG\parameter(
      *          name="uts",
      *          in="formData",
      *          required=true,
-     *          type="string
+     *          type="string"
      *      ),
      *     @SWG\parameter(
      *          name="uas",
      *          in="formData",
      *          required=true,
-     *          type="string
+     *          type="string"
      *      ),
      *     @SWG\parameter(
      *          name="grade",

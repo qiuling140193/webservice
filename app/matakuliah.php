@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
      *  @SWG\Definition(
-     *      definition="jurusan",
+     *      definition="matakuliah",
      *      @SWG\Property(
      *          property="nama",
      *          type="string"

@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
      *  @SWG\Definition(
-     *      definition="jurusan",
+     *      definition="nilai",
      *      @SWG\Property(
      *          property="semester",
      *          type="string"
      *      ),
      *      @SWG\Property(
-     *          property="nid",
+     *          property="id_dosen",
      *          type="string"
      *      ),
      *      @SWG\Property(
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
      *          type="integer"
      *      ),
      *      @SWG\Property(
-     *          property="nim",
+     *          property="id_mahasiswa",
      *          type="integer"
      *      ),
      *      @SWG\Property(

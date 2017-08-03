@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
      *  @SWG\Definition(
-     *      definition="jurusan",
+     *      definition="krs",
      *      @SWG\Property(
      *          property="nim",
      *          type="string"
