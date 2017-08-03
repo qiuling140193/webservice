@@ -13,16 +13,16 @@ class ruangController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Get(
-     *      path="/api/v1/ruang",
+     *      path="/api/v1/kelas",
      *      summary="Retrieves the collection of Ruang resources.",
      *      produces={"application/json"},
-     *      tags={"ruang"},
+     *      tags={"Ruang"},
      *      @SWG\Response(
      *          response=200,
      *          description="Ruang collection.",
      *          @SWG\Schema(
      *               type="array",
-     *               @SWG\Items(ref="#/definitions/ruang")
+     *               @SWG\Items(ref="#/definitions/kelas")
      *          )
      *      ),
      *      @SWG\Response(
@@ -39,8 +39,19 @@ class ruangController extends Controller
      */ 
     public function index()
     {
-        $kelas=kelas::paginate(5);
-        return response()->json($kelas->toArray());
+       
+        $user=Auth::user();
+
+        if($user->id_level!=3){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else($user->id_level ==1) {
+
+             $kelas=kelas::paginate(5);
+            return response()->json($kelas->toArray());
+
+
     }
 
     /**
@@ -60,11 +71,11 @@ class ruangController extends Controller
      * @return \Illuminate\Http\Response
      *
      *   @SWG\Post(
-     *      path="/api/v1/ruang",
+     *      path="/api/v1/kelas",
      *      summary="Data Ruang",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"ruang"},
+     *      tags={"Ruang"},
      *      @SWG\Response(
      *          response=200,
      *          description="Data Ruang.",
@@ -148,7 +159,7 @@ class ruangController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @SWG\Delete(
-     *      path="/api/v1/ruang/{id}",
+     *      path="/api/v1/kelas/{id}",
      *      summary="Removes the Ruang resource.",
      *      produces={"application/json"},
      *      tags={"Ruang"},

@@ -19,7 +19,7 @@ class adminController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/admin",
-     *      summary="Retrieves the collection of MediaFile resources.",
+     *      summary="Retrieves the collection of Admin resources.",
      *      produces={"application/json"},
      *      tags={"Admin"},
      *      @SWG\Response(
@@ -246,7 +246,7 @@ class adminController extends Controller
      *
      *  @SWG\Delete(
      *      path="/api/v1/admin/{id}",
-     *      summary="Removes the mediafile resource.",
+     *      summary="Removes the Admin resource.",
      *      produces={"application/json"},
      *      tags={"Admin"},
      *      @SWG\Response(

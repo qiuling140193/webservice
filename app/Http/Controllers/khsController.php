@@ -55,7 +55,7 @@ class khsController extends Controller
      *      summary="Data khs",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"khs"},
+     *      tags={"KHS"},
      *      @SWG\Response(
      *          response=200,
      *          description="Data KHS.",

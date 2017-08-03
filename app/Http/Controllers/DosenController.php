@@ -211,7 +211,7 @@ class DosenController extends Controller
      *      path="/api/v1/dosen/{id}",
      *      summary="Removes the Dosen resource.",
      *      produces={"application/json"},
-     *      tags={"mahasiswa"},
+     *      tags={"Dosen"},
      *      @SWG\Response(
      *          response=204,
      *          description="Dosen resource delete."

@@ -53,7 +53,7 @@ class MataKuliahController extends Controller
      *      summary="Data Matakuliah",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"matakuliah"},
+     *      tags={"Matakuliah"},
      *      @SWG\Response(
      *          response=200,
      *          description="Data Matakuliah.",
@@ -142,7 +142,7 @@ class MataKuliahController extends Controller
      *      path="/api/v1/matakuliah/{id}",
      *      summary="Removes the Matakuliah resource.",
      *      produces={"application/json"},
-     *      tags={"matakuliah"},
+     *      tags={"Matakuliah"},
      *      @SWG\Response(
      *          response=204,
      *          description="Mata Kuliah resource delete."

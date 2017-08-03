@@ -19,7 +19,7 @@ class nilaiController extends Controller
      *      path="/api/v1/nilai",
      *      summary="Retrieves the collection of Nilai resources.",
      *      produces={"application/json"},
-     *      tags={"nilai"},
+     *      tags={"Nilai"},
      *      @SWG\Response(
      *          response=200,
      *          description="Nilai collection.",

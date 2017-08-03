@@ -17,7 +17,7 @@ class userController extends Controller
      *      path="/api/v1/user",
      *      summary="Retrieves the collection of User resources.",
      *      produces={"application/json"},
-     *      tags={"user"},
+     *      tags={"User"},
      *      @SWG\Response(
      *          response=200,
      *          description="Users collection.",
@@ -65,7 +65,7 @@ class userController extends Controller
      *      summary="Data user",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"user"},
+     *      tags={"User"},
      *      @SWG\Response(
      *          response=200,
      *          description="Data User.",

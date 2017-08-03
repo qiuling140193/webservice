@@ -16,7 +16,7 @@ class krsController extends Controller
      *      path="/api/v1/krs",
      *      summary="Retrieves the collection of KRS resources.",
      *      produces={"application/json"},
-     *      tags={"krs"},
+     *      tags={"KRS"},
      *      @SWG\Response(
      *          response=200,
      *          description="krs collection.",
@@ -55,7 +55,7 @@ class krsController extends Controller
      *      summary="Data KRS",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
-     *      tags={"krs"},
+     *      tags={"KRS"},
      *      @SWG\Response(
      *          response=200,
      *          description="Data KRS.",
@@ -144,7 +144,7 @@ class krsController extends Controller
      *      path="/api/v1/krs/{id}",
      *      summary="Removes the KRS resource.",
      *      produces={"application/json"},
-     *      tags={"krs"},
+     *      tags={"KRS"},
      *      @SWG\Response(
      *          response=204,
      *          description="KRS resource delete."

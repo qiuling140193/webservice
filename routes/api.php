@@ -43,9 +43,7 @@ Route::group(['prefix'=>'v1'], function(){
 			Route::resource('user','userController');
 			Route::resource('nilai','nilaiController');
 			Route::resource('matakuliah', 'MataKuliahController');
-
-
-Route::resource('krs', 'krsController');
+			Route::resource('krs', 'krsController');
 
 	});
 });

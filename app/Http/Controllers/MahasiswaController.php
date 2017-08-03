@@ -263,7 +263,7 @@ class MahasiswaController extends Controller
      *      path="/api/v1/mahasiswa/{id}",
      *      summary="Removes the Mahasiswa resource.",
      *      produces={"application/json"},
-     *      tags={"mahasiswa"},
+     *      tags={"Mahasiswa"},
      *      @SWG\Response(
      *          response=204,
      *          description="Mahasiswa resource delete."

@@ -117,7 +117,7 @@
         "/api/v1/dosen/{id}": {
             "delete": {
                 "tags": [
-                    "mahasiswa"
+                    "Dosen"
                 ],
                 "summary": "Removes the Dosen resource.",
                 "produces": [
@@ -651,7 +651,7 @@
         "/api/v1/mahasiswa/{id}": {
             "delete": {
                 "tags": [
-                    "mahasiswa"
+                    "Mahasiswa"
                 ],
                 "summary": "Removes the Mahasiswa resource.",
                 "produces": [
@@ -718,7 +718,7 @@
             },
             "post": {
                 "tags": [
-                    "matakuliah"
+                    "Matakuliah"
                 ],
                 "summary": "Data Matakuliah",
                 "consumes": [
@@ -765,7 +765,7 @@
         "/api/v1/matakuliah/{id}": {
             "delete": {
                 "tags": [
-                    "matakuliah"
+                    "Matakuliah"
                 ],
                 "summary": "Removes the Matakuliah resource.",
                 "produces": [
@@ -834,7 +834,7 @@
         "/api/v1/mediafiles/{id}": {
             "delete": {
                 "tags": [
-                    "mediafies"
+                    "mediafiles"
                 ],
                 "summary": "Removes the mediafile resource.",
                 "produces": [
@@ -867,10 +867,10 @@
                 }
             }
         },
-        "/api/v1/ruang": {
+        "/api/v1/kelas": {
             "get": {
                 "tags": [
-                    "ruang"
+                    "Ruang"
                 ],
                 "summary": "Retrieves the collection of Ruang resources.",
                 "produces": [
@@ -890,7 +890,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/ruang"
+                                "$ref": "#/definitions/kelas"
                             }
                         }
                     },
@@ -901,7 +901,7 @@
             },
             "post": {
                 "tags": [
-                    "ruang"
+                    "Ruang"
                 ],
                 "summary": "Data Ruang",
                 "consumes": [
@@ -940,7 +940,7 @@
                 }
             }
         },
-        "/api/v1/ruang/{id}": {
+        "/api/v1/kelas/{id}": {
             "delete": {
                 "tags": [
                     "Ruang"
@@ -981,7 +981,7 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Retrieves the collection of MediaFile resources.",
+                "summary": "Retrieves the collection of Admin resources.",
                 "produces": [
                     "application/json"
                 ],
@@ -1084,7 +1084,7 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Removes the mediafile resource.",
+                "summary": "Removes the Admin resource.",
                 "produces": [
                     "application/json"
                 ],
@@ -1149,7 +1149,7 @@
             },
             "post": {
                 "tags": [
-                    "khs"
+                    "KHS"
                 ],
                 "summary": "Data khs",
                 "consumes": [
@@ -1262,7 +1262,7 @@
         "/api/v1/krs": {
             "get": {
                 "tags": [
-                    "krs"
+                    "KRS"
                 ],
                 "summary": "Retrieves the collection of KRS resources.",
                 "produces": [
@@ -1293,7 +1293,7 @@
             },
             "post": {
                 "tags": [
-                    "krs"
+                    "KRS"
                 ],
                 "summary": "Data KRS",
                 "consumes": [
@@ -1340,7 +1340,7 @@
         "/api/v1/krs/{id}": {
             "delete": {
                 "tags": [
-                    "krs"
+                    "KRS"
                 ],
                 "summary": "Removes the KRS resource.",
                 "produces": [
@@ -1376,7 +1376,7 @@
         "/api/v1/nilai": {
             "get": {
                 "tags": [
-                    "nilai"
+                    "Nilai"
                 ],
                 "summary": "Retrieves the collection of Nilai resources.",
                 "produces": [
@@ -1533,7 +1533,7 @@
         "/api/v1/user": {
             "get": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Retrieves the collection of User resources.",
                 "produces": [
@@ -1564,7 +1564,7 @@
             },
             "post": {
                 "tags": [
-                    "user"
+                    "User"
                 ],
                 "summary": "Data user",
                 "consumes": [
