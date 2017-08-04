@@ -85,8 +85,7 @@ class MahasiswaController extends Controller
      *      @SWG\Response(
      *          response=401,
      *          description="Unauthorized action.",
-     *      ),
-     
+     *      ), 
      *      @SWG\parameter(
      *          name="id",
      *          in="formData",

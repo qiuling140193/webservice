@@ -7,6 +7,10 @@
 <h1>Sri Wardani</h1>
 <p>Username : qiuling140193</p>
 <p>NIM : 17075</p>
+<p>API Akademik UPH. di APU akademik uph ini terbagi menjadi 3bagian</p>
+<p>Admin : Admin bisa melakukan create, update, delete user,data mahasiswa, dosen, admin, jadwal, fakultas, jurusan, matakuliah, ruang, kelas,khs, krs dan jam perkuliahan.</p>
+<p>Dosen : Dosen bisa melakukan input nilai, melihat jadwal</p>
+<p>Mahasiswa : Mahasiswa bisa melihat nilai, dan jadwal</p>
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">

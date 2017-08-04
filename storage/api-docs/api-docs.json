@@ -17,7 +17,7 @@
         "/api/v1/login": {
             "post": {
                 "tags": [
-                    "login"
+                    "Login"
                 ],
                 "summary": "User Login",
                 "consumes": [
@@ -821,6 +821,202 @@
                 }
             }
         },
+        "/api/v1/kelas": {
+            "get": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Retrieves the collection of Ruang resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ruang collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/kelas"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/kelas": {
+            "post": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Data Ruang",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Data Kelas",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users Token.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/kelas/{id}": {
+            "get": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Retrieves the collection of Ruang resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ruang collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/kelas"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Data Ruang",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Ruang",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ruang"
+                ],
+                "summary": "Removes the Ruang resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Ruang resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
         "/api/v1/mahasiswa": {
             "get": {
                 "tags": [
@@ -1288,7 +1484,7 @@
                 "tags": [
                     "MataKuliah"
                 ],
-                "summary": "Removes the Matakuliah resource.",
+                "summary": "Removes the Mata Kuliah resource.",
                 "produces": [
                     "application/json"
                 ],
@@ -1322,7 +1518,7 @@
         "/api/v1/mediafiles": {
             "get": {
                 "tags": [
-                    "mediafiles"
+                    "Mediafiles"
                 ],
                 "summary": "Retrieves the collection of MediaFile resources.",
                 "produces": [
@@ -1355,9 +1551,9 @@
         "/api/v1/mediafiles/{id}": {
             "delete": {
                 "tags": [
-                    "mediafiles"
+                    "Mediafiles"
                 ],
-                "summary": "Removes the mediafile resource.",
+                "summary": "Removes the Mediafile resource.",
                 "produces": [
                     "application/json"
                 ],
@@ -1378,202 +1574,6 @@
                 "responses": {
                     "204": {
                         "description": "Mediafile resource delete."
-                    },
-                    "401": {
-                        "description": "Unauthorized Action."
-                    },
-                    "404": {
-                        "description": "Resource not found."
-                    }
-                }
-            }
-        },
-        "/api/v1/kelas": {
-            "get": {
-                "tags": [
-                    "Ruang"
-                ],
-                "summary": "Retrieves the collection of Ruang resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Ruang collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/kelas"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            }
-        },
-        "/api/kelas": {
-            "post": {
-                "tags": [
-                    "Ruang"
-                ],
-                "summary": "Data Ruang",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Data Kelas",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Users Token.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            }
-        },
-        "/api/v1/kelas/{id}": {
-            "get": {
-                "tags": [
-                    "Ruang"
-                ],
-                "summary": "Retrieves the collection of Ruang resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "ruang collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/kelas"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Ruang"
-                ],
-                "summary": "Data Ruang",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Data Ruang",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success Update.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Ruang"
-                ],
-                "summary": "Removes the Ruang resource.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Ruang resource delete."
                     },
                     "401": {
                         "description": "Unauthorized Action."
