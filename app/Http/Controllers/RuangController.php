@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\kelas;
+use Auth;
+use App\User;
+use App\Admin;
 
 class ruangController extends Controller
 {
@@ -42,14 +45,15 @@ class ruangController extends Controller
        
         $user=Auth::user();
 
-        if($user->id_level!=3){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-        }else($user->id_level ==1) {
+        }else{
 
              $kelas=kelas::paginate(5);
             return response()->json($kelas->toArray());
+        }
 
 
     }
@@ -66,8 +70,8 @@ class ruangController extends Controller
 
     /**
     * @SWG\Post(
-    *      path="/api/kelas",
-    *      summary="Data Ruang",
+    *      path="/api/v1/kelas",
+    *      summary="Input Data Ruang",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Ruang"},
@@ -102,13 +106,19 @@ class ruangController extends Controller
    */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama'=>'required',
-            ]);
-        $kelas = new kelas();
-        $kelas->nama=$request->input('nama');
-        $kelas->save();
-        return response()->json($kelas);
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else{
+            $this->validate($request,[
+                'nama'=>'required',
+                ]);
+            $kelas = new kelas();
+            $kelas->nama=$request->input('nama');
+            $kelas->save();
+            return response()->json($kelas);
+            }
     }
 
     /**
@@ -208,10 +218,16 @@ class ruangController extends Controller
    */
     public function update(Request $request, $id)
     {
-        $kelas = kelas::find($id);
-        $kelas->nama=$request->input('nama');
-        $kelas->save();
-        return response()->json($kelas->toArray());
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+            $kelas = kelas::find($id);
+            $kelas->nama=$request->input('nama');
+            $kelas->save();
+            return response()->json($kelas->toArray());
+        }
     }
 
     /**
@@ -253,8 +269,14 @@ class ruangController extends Controller
      */
     public function destroy($id)
     {
-        $kelas = kelas::find($id);
-        $kelas->delete();
-        return response()->json($kelas->toArray());
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+
+        }else {
+            $kelas = kelas::find($id);
+            $kelas->delete();
+            return response()->json($kelas->toArray());
+        }
     }
 }

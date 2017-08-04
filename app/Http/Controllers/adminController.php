@@ -74,7 +74,7 @@ class adminController extends Controller
     /**
     * @SWG\Post(
     *      path="/api/v1/admin",
-    *      summary="Data Admin",
+    *      summary="Input Data Admin",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Admin"},
@@ -145,7 +145,7 @@ class adminController extends Controller
      * @return \Illuminate\Http\Response
       * @SWG\Get(
      *      path="/api/v1/admin/{id}",
-     *      summary="Retrieves the collection of Admin resources.",
+     *      summary="Retrieves the Admin Data by ID.",
      *      produces={"application/json"},
      *      tags={"Admin"},
      *      @SWG\Response(
@@ -202,7 +202,7 @@ class adminController extends Controller
      /**
      * @SWG\Put(
     *      path="/api/v1/admin/{id}",
-    *      summary="Data Admin",
+    *      summary="Update Data Admin",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Admin"},

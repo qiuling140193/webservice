@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\khs;
 use App\mahasiswa;
 use App\matakuliah;
+use Auth;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class khsController extends Controller
 {
@@ -49,12 +53,14 @@ class khsController extends Controller
             return response()->json($khs->toArray());
         }
     }
+    
+    
 
 
         /**
     * @SWG\Post(
     *      path="/api/v1/khs",
-    *      summary="Data KHS",
+    *      summary="Input Data KHS",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"KHS"},
@@ -93,14 +99,14 @@ class khsController extends Controller
     {
         $user=Auth::user();
 
-        if($user->id_level!=2){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }
         else{
                 $this->validate($request, [
-                    'nim'=>'required',
+                    'id_mahasiswa'=>'required',
     	    		'id_matkul'=>'required',
     	    		'absensi'=>'required',
     	    		'tugas'=>'required',
@@ -109,7 +115,7 @@ class khsController extends Controller
     	    		'grade'=>'required',
                     ]);
             $khs = new khs();
-            $khs->nim = $request->input('nim');
+            $khs->id_mahasiswa = $request->input('id_mahasiswa');
             $khs->id_matkul = $request->input('id_matkul');
             $khs->absensi = $request->input('absensi');
             $khs->tugas = $request->input('tugas');
@@ -127,7 +133,7 @@ class khsController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/khs/{id}",
-     *      summary="Retrieves the collection of KHS resources.",
+     *      summary="Retrieves the KHS Data by ID.",
      *      produces={"application/json"},
      *      tags={"KHS"},
      *      @SWG\Response(
@@ -165,7 +171,7 @@ class khsController extends Controller
 /**
      * @SWG\Put(
     *      path="/api/v1/khs/{id}",
-    *      summary="Data KHS",
+    *      summary="Update Data KHS",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"KHS"},
@@ -209,13 +215,13 @@ class khsController extends Controller
     {
         $user=Auth::user();
 
-        if($user->id_level!=2){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }else {
         	$this->validate($request, [
-        		'nim'=>'required',
+        		'id_mahasiswa'=>'required',
         		'id_matkul'=>'required',
         		'absensi'=>'required',
         		'tugas'=>'required',
@@ -224,7 +230,7 @@ class khsController extends Controller
         		'grade'=>'required',
                 ]);
         	$khs = khs::find($id);
-            $khs->nim = $request->input('nim');
+            $khs->id_mahasiswa = $request->input('id_mahasiswa');
             $khs->id_matkul = $request->input('id_matkul');
             $khs->absensi = $request->input('absensi');
             $khs->tugas = $request->input('tugas');

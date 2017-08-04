@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\mahasiswa;
+use App\admin;
 use App\nilai;
 use App\dosen;
-use App\nilai;
+use Auth;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class nilaiController extends Controller
 {
@@ -42,20 +46,45 @@ class nilaiController extends Controller
      */ 
     public function index()
     {
-             $user=Auth::user();
+        //      $user=Auth::user();
 
-            if($user->id_level==3){
+        //     if($user->id_level==3){
 
-                return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
+        //         return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
 
-            }elseif ($user->id_level ==1) {
+        //     }elseif ($user->id_level ==1) {
 
-                $nilai=nilai::paginate(10);
-                return response()->json($nilai->toArray());
+        //         $nilai=nilai::paginate(10);
+        //         return response()->json($nilai->toArray());
 
-            }elseif ($user->id_level==2){
-                // $nilai=nilai::paginate();
-                // return response()->json($nilai->toArray());
+        //     }elseif ($user->id_level==2){
+        //         $nilai=nilai::paginate();
+        //         return response()->json($nilai->toArray());
+        // }
+
+        $user=Auth::user();
+        
+        if($user->id_level==3){
+
+            
+            $nilai = nilai::get();
+            return $nilai;
+
+        }elseif ($user->id_level ==1) {
+
+
+            $nilai = nilai::paginate(5);
+
+            return response()->json($nilai->toArray());
+
+        }elseif ($user->id_level==2){
+
+            $user->profile->load('nilai');
+            return $user;
+        }
+        else {
+            $nilai = null;
+            return $nilai;
         }
     }
 
@@ -71,8 +100,8 @@ class nilaiController extends Controller
 
     /**
     * @SWG\Post(
-    *      path="/api/nilai",
-    *      summary="Data Nilai",
+    *      path="/api/v1/nilai",
+    *      summary="Input Data Nilai",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Nilai"},
@@ -116,9 +145,9 @@ class nilaiController extends Controller
         }else {
              $this->validate($request,[
                 'semester'=>'required',
-                'nid'=>'required',
+                'id_dosen'=>'required',
                 'id_matkul'=>'required',
-                'nim'=>'required',
+                'id_mahasiswa'=>'required',
                 'absensi'=>'required',
                 'tugas'=>'required',
                 'uts'=>'required',
@@ -127,9 +156,9 @@ class nilaiController extends Controller
                 ]);
             $nilai = new nilai();
             $nilai->semester=$request->input('semester');
-            $nilai->nid=$request->input('nid');
+            $nilai->id_dosen=$request->input('id_dosen');
             $nilai->id_matkul=$request->input('id_matkul');
-            $nilai->nim=$request->input('nim');
+            $nilai->id_mahasiswa=$request->input('id_mahasiswa');
             $nilai->absensi=$request->input('absensi');
             $nilai->tugas=$request->input('tugas');
             $nilai->uts=$request->input('uts');
@@ -147,7 +176,7 @@ class nilaiController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/nilai/{id}",
-     *      summary="Retrieves the collection of Nilai resources.",
+     *      summary="Retrieves the Nilai Data by ID.",
      *      produces={"application/json"},
      *      tags={"Nilai"},
      *      @SWG\Response(
@@ -196,7 +225,7 @@ class nilaiController extends Controller
     /**
      * @SWG\Put(
     *      path="/api/v1/nilai/{id}",
-    *      summary="Data Nilai",
+    *      summary="Update Data Nilai",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Nilai"},
@@ -239,16 +268,16 @@ class nilaiController extends Controller
     {
          $user=Auth::user();
 
-        if($user->id_level!=2){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }else {
             $this->validate($request,[
                 'semester'=>'required',
-                'nid'=>'required',
+                'id_dosen'=>'required',
                 'id_matkul'=>'required',
-                'nim'=>'required',
+                'id_mahasiswa'=>'required',
                 'absensi'=>'required',
                 'tugas'=>'required',
                 'uts'=>'required',
@@ -257,9 +286,9 @@ class nilaiController extends Controller
                 ]);
             $nilai = nilai::find($id);
             $nilai->semester=$request->input('semester');
-            $nilai->nid=$request->input('nid');
+            $nilai->id_dosen=$request->input('id_dosen');
             $nilai->id_matkul=$request->input('id_matkul');
-            $nilai->nim=$request->input('nim');
+            $nilai->id_mahasiswa=$request->input('id_mahasiswa');
             $nilai->absensi=$request->input('absensi');
             $nilai->tugas=$request->input('tugas');
             $nilai->uts=$request->input('uts');
@@ -308,8 +337,16 @@ class nilaiController extends Controller
      */
     public function destroy($id)
     {
+
+        if($user->id_level!=1){
+
+            return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
+
+        } else {
         $nilai = nilai::find($id);
         $nilai->delete();
         return response()->json($nilai->toArray());
+           
+        }
     }
 }

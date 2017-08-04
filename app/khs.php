@@ -53,4 +53,4 @@ class khs extends Model
         'nim','id_matkul','absensi','tugas','uts','uas','grade'
         ];
 }
-}
+

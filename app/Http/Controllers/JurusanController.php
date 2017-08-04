@@ -57,7 +57,7 @@ class JurusanController extends Controller
     /**
     * @SWG\Post(
     *      path="/api/v1/jurusan",
-    *      summary="Data Jurusan",
+    *      summary="Input Data Jurusan",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Jurusan"},
@@ -126,7 +126,7 @@ class JurusanController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/jurusan/{id}",
-     *      summary="Retrieves the collection of Jurusan resources.",
+     *      summary="Retrieves the Jurusan Data resources.",
      *      produces={"application/json"},
      *      tags={"Jurusan"},
      *      @SWG\Response(
@@ -155,7 +155,7 @@ class JurusanController extends Controller
      *      )
      *  )
      */
-    public function show(Request $request)
+    public function show($id)
     {
         $user=Auth::user();
 
@@ -172,7 +172,7 @@ class JurusanController extends Controller
      /**
      * @SWG\Put(
     *      path="/api/v1/jurusan/{id}",
-    *      summary="Data Jurusan",
+    *      summary="Update Data Jurusan",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Jurusan"},

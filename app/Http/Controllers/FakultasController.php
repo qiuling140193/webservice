@@ -57,7 +57,7 @@ class FakultasController extends Controller
     /**
     * @SWG\Post(
     *      path="/api/v1/fakultas",
-    *      summary="Data Fakultas",
+    *      summary="Input Data Fakultas",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Fakultas"},
@@ -123,7 +123,7 @@ class FakultasController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/fakultas/{id}",
-     *      summary="Retrieves the collection of Fakultas resources.",
+     *      summary="Retrieves the Fakultas Data by ID.",
      *      produces={"application/json"},
      *      tags={"Fakultas"},
      *      @SWG\Response(
@@ -170,7 +170,7 @@ class FakultasController extends Controller
  /**
      * @SWG\Put(
     *      path="/api/v1/fakultas/{id}",
-    *      summary="Data Dosen",
+    *      summary="Update Data Fakultas",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Fakultas"},

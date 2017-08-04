@@ -69,7 +69,7 @@ class DosenController extends Controller
     /**
     * @SWG\Post(
     *      path="/api/v1/dosen",
-    *      summary="Data Dosen",
+    *      summary="Input Data Dosen",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Dosen"},
@@ -138,7 +138,7 @@ class DosenController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/dosen/{id}",
-     *      summary="Retrieves the collection of Dosen resources.",
+     *      summary="Retrieves the Dosen Data by ID.",
      *      produces={"application/json"},
      *      tags={"Dosen"},
      *      @SWG\Response(
@@ -192,7 +192,7 @@ class DosenController extends Controller
         /**
      * @SWG\Put(
     *      path="/api/v1/dosen/{id}",
-    *      summary="Data Dosen",
+    *      summary="Update Data Dosen",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Dosen"},

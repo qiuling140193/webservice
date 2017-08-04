@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\matakuliah;
+use Auth;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 
 class MataKuliahController extends Controller
@@ -52,7 +56,7 @@ class MataKuliahController extends Controller
        /**
     * @SWG\Post(
     *      path="/api/v1/matakuliah",
-    *      summary="Data MataKuliah",
+    *      summary="Input Data MataKuliah",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"MataKuliah"},
@@ -115,7 +119,7 @@ class MataKuliahController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/matakuliah/{id}",
-     *      summary="Retrieves the collection of MataKuliah resources.",
+     *      summary="Retrieves the Mata Kuliah Data by ID.",
      *      produces={"application/json"},
      *      tags={"MataKuliah"},
      *      @SWG\Response(
@@ -154,7 +158,7 @@ class MataKuliahController extends Controller
     /**
     * @SWG\Put(
     *      path="/api/v1/matakuliah/{id}",
-    *      summary="Data MataKuliah",
+    *      summary="Update Data MataKuliah",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"MataKuliah"},

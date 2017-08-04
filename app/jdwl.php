@@ -53,4 +53,11 @@ class jdwl extends Model
         'semester','hari','id_jurusan','id_dosen','id_kelas','id_jam','id_matakuliah'
         ];
         public $timestamps=false;
+
+        public function dosen(){
+            return $this->oneToMany('App\jdwl', 'profile');
+        }
+        public function mahasiswa(){
+           return $this->oneToMany('App\jdwl', 'profile');
+        }
 }

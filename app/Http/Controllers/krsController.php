@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\krs;
 use App\mahasiswa;
 use App\matakuliah;
+use Auth;
 use Input;
+use App\User;
+use Exception;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class krsController extends Controller
 {
@@ -39,6 +43,8 @@ class krsController extends Controller
      */ 
     public function index()
     {
+        $user=Auth::user();
+        
         if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);
@@ -53,7 +59,7 @@ class krsController extends Controller
        /**
     * @SWG\Post(
     *      path="/api/v1/krs",
-    *      summary="Data KRS",
+    *      summary="Input Data KRS",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"KRS"},
@@ -90,18 +96,18 @@ class krsController extends Controller
     {
              $user=Auth::user();
 
-            if($user->id_level!=3){
+            if($user->id_level!=1){
 
                 return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
             }
             else{
                 $this->validate($request, [
-                    'nim'=>'required',
+                    'id_mahasiswa'=>'required',
                     'id_matkul'=>'required',
                     ]);
             $krs = new krs();
-            $krs->nim = $request->input('nim');
+            $krs->id_mahasiswa = $request->input('id_mahasiswa');
             $krs->id_matkul = $request->input('id_matkul');
             $krs->save();
             return response()->json($krs);
@@ -114,7 +120,7 @@ class krsController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/krs/{id}",
-     *      summary="Retrieves the collection of KRS resources.",
+     *      summary="Retrieves the KRS Data by ID.",
      *      produces={"application/json"},
      *      tags={"KRS"},
      *      @SWG\Response(
@@ -151,7 +157,7 @@ class krsController extends Controller
 /**
     * @SWG\Put(
     *      path="/api/v1/krs/{id}",
-    *      summary="Data KRS",
+    *      summary="Update Data KRS",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"KRS"},
@@ -195,18 +201,18 @@ class krsController extends Controller
     {
          $user=Auth::user();
 
-        if($user->id_level!=3){
+        if($user->id_level!=1){
 
             return response()->json(['error'=>Auth::user()->name.' ,Forbidden'], 403);
 
         }
         else{
         	$this->validate($request, [
-                'nim'=>'required', 
+                'id_mahasiswa'=>'required', 
                 'id_matkul'=>'required',
                 ]);
         	$krs = krs::find($id);
-            $krs->nim = $request->input('nim');
+            $krs->id_mahasiswa = $request->input('id_mahasiswa');
             $krs->id_matkul = $request->input('id_matkul');
             $krs->save();
             return response()->json($krs->toArray());

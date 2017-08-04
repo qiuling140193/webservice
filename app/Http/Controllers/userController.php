@@ -58,7 +58,7 @@ class userController extends Controller
     /**
     * @SWG\Post(
     *      path="/api/user",
-    *      summary="Data User",
+    *      summary="Input Data User",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"User"},
@@ -98,13 +98,15 @@ class userController extends Controller
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
-            'id_level'=>'required'
+            'id_level'=>'required',
+            'profile_id'=>'required'
             ]);
         $user = new User();
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
         $user->id_level=$request->input('id_level');
+        $user->profile_id=$request->input('profile_id');
         $user->save();
         return response()->json($user);
     }
@@ -116,7 +118,7 @@ class userController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/user/{id}",
-     *      summary="Retrieves the collection of User resources.",
+     *      summary="Retrieves the User Data by ID.",
      *      produces={"application/json"},
      *      tags={"User"},
      *      @SWG\Response(
@@ -165,7 +167,7 @@ class userController extends Controller
     /**
      * @SWG\Put(
     *      path="/api/v1/user/{id}",
-    *      summary="Data User",
+    *      summary="Update Data User",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"User"},
@@ -210,15 +212,17 @@ class userController extends Controller
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
-            'id_level'=>'required'
+            'id_level'=>'required',
+            'profile_id'=>'required'
             ]);
         $user = User::find($id);
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
         $user->id_level=$request->input('id_level');
+        $user->profile_id=$request->input('profile_id');
         $user->save();
-        return response()->json($user->toArray());
+        return response()->json($user);
     }
 
     /**

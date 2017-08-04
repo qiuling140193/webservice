@@ -58,6 +58,12 @@ use Illuminate\Database\Eloquent\Model;
 class nilai extends Model
 {
     protected $fillable = [
-        'semester','nid','id_matkul','nim','absensi','tugas','uts','uas','grade'
+        'semester','id_dosen','id_matkul','id_mahasiswa','absensi','tugas','uts','uas','grade'
         ];
+        public function dosen(){
+            return $this->oneToMany('App\nilai', 'profile');
+        }
+        public function mahasiswa(){
+          return $this->hasOne('App\nilai', 'profile');
+    }
 }

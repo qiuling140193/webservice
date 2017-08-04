@@ -58,4 +58,10 @@ class dosen extends Model
     public function user(){
     	return $this->hasOne('App\User', 'profile');
     }
+    public function jadwal(){
+        return $this->hasMany('App\jdwl', 'id_dosen');
+    }
+    public function nilai(){
+        return $this->hasMany('App\nilai', 'id_dosen');
+    }
 }

@@ -47,13 +47,13 @@ class JadwalController extends Controller
     public function index()
     {
         $user=Auth::user();
-
         if($user->id_level==3){
 
-            $mahasiswa = Auth::jdwl()->profile;
-            return $mahasiswa;
+            $jadwal = jdwl::get();
+            return $jadwal;
 
         }elseif ($user->id_level ==1) {
+
 
         	$jadwal = jdwl::paginate(5);
 
@@ -61,17 +61,22 @@ class JadwalController extends Controller
 
         }elseif ($user->id_level==2){
 
-           $dosen = Auth::jdwl()->profile;
-
-            return $dosen;
+           $jadwal = $user->profile->jadwal;
+            return $jadwal;
         }
+        else {
+            $jadwal = null;
+            return $jadwal;
+        }
+
+
     }
 
 
      /**
     * @SWG\Post(
     *      path="/api/v1/jadwal",
-    *      summary="Data Jadwal",
+    *      summary="Update Data Jadwal",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Jadwal"},
@@ -148,7 +153,7 @@ class JadwalController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/jadwal/{id}",
-     *      summary="Retrieves the collection of Jadwal resources.",
+     *      summary="Retrieves the Jadwal Data by ID.",
      *      produces={"application/json"},
      *      tags={"Jadwal"},
      *      @SWG\Response(
@@ -184,15 +189,15 @@ class JadwalController extends Controller
     }
 
     /**
-    * @SWG\Put(
-    *      path="/api/v1/jadwal",
-    *      summary="Data Jadwal",
+     * @SWG\Put(
+    *      path="/api/v1/jadwal/{id}",
+    *      summary="Update Data Jadwal",
     *      produces={"application/json"},
     *      consumes={"application/json"},
     *      tags={"Jadwal"},
     *      @SWG\Response(
     *          response=200,
-    *          description="Users Token.",
+    *          description="Success Update.",
     *          @SWG\Property(
     *              property="token",
     *              type="string"
@@ -208,6 +213,12 @@ class JadwalController extends Controller
     *          required=true,
     *          type="string"
     *      ),
+    *       @SWG\parameter(
+    *          name="id",
+    *          in="path",
+    *          required=true,
+    *          type="integer"
+    *      ),
     *      @SWG\parameter(
     *          name="Data Jadwal",
     *          in="body",
@@ -218,7 +229,7 @@ class JadwalController extends Controller
     *          )
     *      )
     * )
-    */
+   */
     public function update(Request $request, $id)
     {
     	 $user=Auth::user();
@@ -287,6 +298,7 @@ class JadwalController extends Controller
      */ 
     public function destroy($id)
     {
+            $user=Auth::user();
             if($user->id_level!=1){
 
                 return response()->json(['error'=>Auth::user()->name.',Forbidden'], 403);

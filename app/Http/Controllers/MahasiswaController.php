@@ -70,7 +70,7 @@ class MahasiswaController extends Controller
     /**
      * @SWG\Post(
      *      path="/api/v1/mahasiswa",
-     *      summary="Data Mahasiswa",
+     *      summary="Input Data Mahasiswa",
      *      produces={"application/json"},
      *      consumes={"multipart/form-data"},
      *      tags={"Mahasiswa"},
@@ -85,10 +85,16 @@ class MahasiswaController extends Controller
      *      @SWG\Response(
      *          response=401,
      *          description="Unauthorized action.",
-     *      ), 
+     *      ),
+     *      @SWG\Parameter(
+     *          name="Authorization",
+     *          in="header",
+     *          required=true,
+     *          type="string"
+     *      ),
      *      @SWG\parameter(
      *          name="id",
-     *          in="formData",
+     *          in="path",
      *          required=false,
      *          type="integer",
      *          format="int32"
@@ -213,7 +219,7 @@ class MahasiswaController extends Controller
      *
      * @SWG\Get(
      *      path="/api/v1/mahasiswa/{id}",
-     *      summary="Retrieves the collection of Mahasiswa resources.",
+     *      summary="Retrieves the Mahasiswa Data by ID.",
      *      produces={"application/json"},
      *      tags={"Mahasiswa"},
      *      @SWG\Response(
@@ -242,108 +248,113 @@ class MahasiswaController extends Controller
      *      )
      *  )
      */
-    public function show($nim)
+    public function show($id)
     {
     	$mahasiswa = mahasiswa::find($nim);
         return response()->json($mahasiswa->toArray());
     }
     /**
-     * @SWG\Put(
-     *      path="/api/v1/mahasiswa/{id}",
-     *      summary="Data Mahasiswa",
-     *      produces={"application/json"},
-     *      consumes={"multipart/form-data"},
-     *      tags={"Mahasiswa"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="Data Mahasiswa.",
-     *          @SWG\Property(
-     *              property="token",
-     *              type="string"
-     *          )
-     *      ),
-     *      @SWG\Response(
-     *          response=401,
-     *          description="Unauthorized action.",
-     *      ),
-     
-     *      @SWG\parameter(
-     *          name="id",
-     *          in="formData",
-     *          required=true,
-     *          type="integer",
-     *          format="int32"
-     *      ),
-     *      @SWG\parameter(
-     *          name="nama",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tempat_lahir",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tanggal_lahir",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="gender",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="alamat",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="phone",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="email",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="tahun",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="id_fakultas",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="id_jurusan",
-     *          in="formData",
-     *          required=true,
-     *          type="string"
-     *      ),
-     *      @SWG\parameter(
-     *          name="image",
-     *          in="formData",
-     *          required=false,
-     *          type="file"
-     *      ),
-     * )
-    */
+     * @SWG\Post(
+    *      path="/api/v1/mahasiswa/{id}",
+    *      summary="Update Data Mahasiswa",
+    *      produces={"application/json"},
+    *      consumes={"application/json"},
+    *      tags={"Mahasiswa"},
+    *      @SWG\Response(
+    *          response=200,
+    *          description="Success Update.",
+    *          @SWG\Property(
+    *              property="token",
+    *              type="string"
+    *          )
+    *      ),
+    *      @SWG\Response(
+    *          response=401,
+    *          description="Unauthorized action.",
+    *      ),
+    *      @SWG\Parameter(
+    *          name="Authorization",
+    *          in="header",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="id",
+    *          in="formData",
+    *          required=true,
+    *          type="integer",
+    *          format="int32"
+    *      ),
+    *      @SWG\parameter(
+    *          name="nama",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="tempat_lahir",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="tanggal_lahir",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="gender",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="alamat",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="phone",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="email",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="tahun",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="id_fakultas",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="id_jurusan",
+    *          in="formData",
+    *          required=true,
+    *          type="string"
+    *      ),
+    *      @SWG\parameter(
+    *          name="image",
+    *          in="formData",
+    *          required=false,
+    *          type="file"
+    *      ),
+    * )
+   */
 
-    public function update(Request $request, $nim)
+    public function update(Request $request, $id)
     {
         $user=Auth::user();
 
@@ -353,7 +364,6 @@ class MahasiswaController extends Controller
 
         }else {
         	$this->validate($request, [
-                'id'=>'required',
         		'nama'=>'required',
         		'tempat_lahir'=>'required',
         		'tanggal_lahir'=>'required',
@@ -363,13 +373,11 @@ class MahasiswaController extends Controller
         		'email'=>'required',
         		'tahun'=>'required',
         		'id_fakultas'=>'required',
-        		'id_jurusan'=>'required',
-                'image'=>'image|required'
+        		'id_jurusan'=>'required'
             ]);
 
             $path = $request->image->store('public');
         	$mahasiswa = mahasiswa::find($id);
-            $mahasiswa->id = $request->input('id');
             $mahasiswa->nama = $request->input('nama');
             $mahasiswa->tempat_lahir = $request->input('tempat_lahir');
             $mahasiswa->tanggal_lahir = $request->input('tanggal_lahir');
@@ -418,7 +426,7 @@ class MahasiswaController extends Controller
      *      )
      *  )
      */
-    public function destroy($nim)
+    public function destroy($id)
     {
 
          $user=Auth::user();

@@ -3,12 +3,12 @@
     "info": {
         "title": "Sample API",
         "contact": {
-            "name": "Erik Alexander, Friscilia Sutanto, Sri Wardani",
+            "name": "Eric Alexander, Friscilia Sutanto, Sri Wardani",
             "url": "https://uph.edu"
         },
         "version": "1.0"
     },
-    "host": "webservice.app",
+    "host": "127.0.0.1:8000",
     "basePath": "",
     "schemes": [
         "http"
@@ -87,7 +87,7 @@
                 "tags": [
                     "Dosen"
                 ],
-                "summary": "Data Dosen",
+                "summary": "Input Data Dosen",
                 "consumes": [
                     "application/json"
                 ],
@@ -130,7 +130,7 @@
                 "tags": [
                     "Dosen"
                 ],
-                "summary": "Retrieves the collection of Dosen resources.",
+                "summary": "Retrieves the Dosen Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -167,7 +167,7 @@
                 "tags": [
                     "Dosen"
                 ],
-                "summary": "Data Dosen",
+                "summary": "Update Data Dosen",
                 "consumes": [
                     "application/json"
                 ],
@@ -281,7 +281,7 @@
                 "tags": [
                     "Fakultas"
                 ],
-                "summary": "Data Fakultas",
+                "summary": "Input Data Fakultas",
                 "consumes": [
                     "application/json"
                 ],
@@ -324,7 +324,7 @@
                 "tags": [
                     "Fakultas"
                 ],
-                "summary": "Retrieves the collection of Fakultas resources.",
+                "summary": "Retrieves the Fakultas Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -361,7 +361,7 @@
                 "tags": [
                     "Fakultas"
                 ],
-                "summary": "Data Dosen",
+                "summary": "Update Data Fakultas",
                 "consumes": [
                     "application/json"
                 ],
@@ -471,52 +471,11 @@
                     }
                 }
             },
-            "put": {
-                "tags": [
-                    "Jadwal"
-                ],
-                "summary": "Data Jadwal",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Data Jadwal",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Users Token.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "Jadwal"
                 ],
-                "summary": "Data Jadwal",
+                "summary": "Update Data Jadwal",
                 "consumes": [
                     "application/json"
                 ],
@@ -559,7 +518,7 @@
                 "tags": [
                     "Jadwal"
                 ],
-                "summary": "Retrieves the collection of Jadwal resources.",
+                "summary": "Retrieves the Jadwal Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -585,6 +544,53 @@
                             "items": {
                                 "$ref": "#/definitions/jadwal"
                             }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Jadwal"
+                ],
+                "summary": "Update Data Jadwal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data Jadwal",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
                         }
                     },
                     "401": {
@@ -663,7 +669,7 @@
                 "tags": [
                     "Jurusan"
                 ],
-                "summary": "Data Jurusan",
+                "summary": "Input Data Jurusan",
                 "consumes": [
                     "application/json"
                 ],
@@ -706,7 +712,7 @@
                 "tags": [
                     "Jurusan"
                 ],
-                "summary": "Retrieves the collection of Jurusan resources.",
+                "summary": "Retrieves the Jurusan Data resources.",
                 "produces": [
                     "application/json"
                 ],
@@ -743,7 +749,7 @@
                 "tags": [
                     "Jurusan"
                 ],
-                "summary": "Data Jurusan",
+                "summary": "Update Data Jurusan",
                 "consumes": [
                     "application/json"
                 ],
@@ -821,6 +827,585 @@
                 }
             }
         },
+        "/api/v1/mahasiswa": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Retrieves the collection of Mahasiswa resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mahasiswa collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mahasiswa"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Input Data Mahasiswa",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tempat_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tanggal_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alamat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tahun",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_fakultas",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_jurusan",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Mahasiswa.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/mahasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Retrieves the Mahasiswa Data by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "mahasiswa collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mahasiswa"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Update Data Mahasiswa",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "nama",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tempat_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tanggal_lahir",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alamat",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tahun",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_fakultas",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id_jurusan",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "image",
+                        "in": "formData",
+                        "required": false,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Removes the Mahasiswa resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mahasiswa resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/v1/matakuliah": {
+            "get": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Retrieves the collection of Mata Kuliah resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Matakuliah collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/matakuliah"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Input Data MataKuliah",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Data MataKuliah",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users Token.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/matakuliah/{id}": {
+            "get": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Retrieves the Mata Kuliah Data by ID.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jurusan collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/matakuliah"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Update Data MataKuliah",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Data KRS",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Update.",
+                        "schema": {
+                            "property": "token",
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "MataKuliah"
+                ],
+                "summary": "Removes the Mata Kuliah resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mata Kuliah resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
+        "/api/v1/mediafiles": {
+            "get": {
+                "tags": [
+                    "Mediafiles"
+                ],
+                "summary": "Retrieves the collection of MediaFile resources.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mediafiles collection.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/mediafile"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "/api/v1/mediafiles/{id}": {
+            "delete": {
+                "tags": [
+                    "Mediafiles"
+                ],
+                "summary": "Removes the Mediafile resource.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mediafile resource delete."
+                    },
+                    "401": {
+                        "description": "Unauthorized Action."
+                    },
+                    "404": {
+                        "description": "Resource not found."
+                    }
+                }
+            }
+        },
         "/api/v1/kelas": {
             "get": {
                 "tags": [
@@ -852,14 +1437,12 @@
                         "description": "Unauthorized action."
                     }
                 }
-            }
-        },
-        "/api/kelas": {
+            },
             "post": {
                 "tags": [
                     "Ruang"
                 ],
-                "summary": "Data Ruang",
+                "summary": "Input Data Ruang",
                 "consumes": [
                     "application/json"
                 ],
@@ -1017,573 +1600,6 @@
                 }
             }
         },
-        "/api/v1/mahasiswa": {
-            "get": {
-                "tags": [
-                    "Mahasiswa"
-                ],
-                "summary": "Retrieves the collection of Mahasiswa resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Mahasiswa collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/mahasiswa"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Mahasiswa"
-                ],
-                "summary": "Data Mahasiswa",
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "formData",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "nama",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tempat_lahir",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tanggal_lahir",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "gender",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "alamat",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "phone",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "email",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tahun",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id_fakultas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id_jurusan",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "image",
-                        "in": "formData",
-                        "required": false,
-                        "type": "file"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data Mahasiswa.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            }
-        },
-        "/api/v1/mahasiswa/{id}": {
-            "get": {
-                "tags": [
-                    "Mahasiswa"
-                ],
-                "summary": "Retrieves the collection of Mahasiswa resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "mahasiswa collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/mahasiswa"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Mahasiswa"
-                ],
-                "summary": "Data Mahasiswa",
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "formData",
-                        "required": true,
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    {
-                        "name": "nama",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tempat_lahir",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tanggal_lahir",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "gender",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "alamat",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "phone",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "email",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tahun",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id_fakultas",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id_jurusan",
-                        "in": "formData",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "image",
-                        "in": "formData",
-                        "required": false,
-                        "type": "file"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data Mahasiswa.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Mahasiswa"
-                ],
-                "summary": "Removes the Mahasiswa resource.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Mahasiswa resource delete."
-                    },
-                    "401": {
-                        "description": "Unauthorized Action."
-                    },
-                    "404": {
-                        "description": "Resource not found."
-                    }
-                }
-            }
-        },
-        "/api/v1/matakuliah": {
-            "get": {
-                "tags": [
-                    "MataKuliah"
-                ],
-                "summary": "Retrieves the collection of Mata Kuliah resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Matakuliah collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/matakuliah"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "MataKuliah"
-                ],
-                "summary": "Data MataKuliah",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Data MataKuliah",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Users Token.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            }
-        },
-        "/api/v1/matakuliah/{id}": {
-            "get": {
-                "tags": [
-                    "MataKuliah"
-                ],
-                "summary": "Retrieves the collection of MataKuliah resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Jurusan collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/matakuliah"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "MataKuliah"
-                ],
-                "summary": "Data MataKuliah",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Data KRS",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success Update.",
-                        "schema": {
-                            "property": "token",
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "MataKuliah"
-                ],
-                "summary": "Removes the Mata Kuliah resource.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Mata Kuliah resource delete."
-                    },
-                    "401": {
-                        "description": "Unauthorized Action."
-                    },
-                    "404": {
-                        "description": "Resource not found."
-                    }
-                }
-            }
-        },
-        "/api/v1/mediafiles": {
-            "get": {
-                "tags": [
-                    "Mediafiles"
-                ],
-                "summary": "Retrieves the collection of MediaFile resources.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Mediafiles collection.",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/mediafile"
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized action."
-                    }
-                }
-            }
-        },
-        "/api/v1/mediafiles/{id}": {
-            "delete": {
-                "tags": [
-                    "Mediafiles"
-                ],
-                "summary": "Removes the Mediafile resource.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Mediafile resource delete."
-                    },
-                    "401": {
-                        "description": "Unauthorized Action."
-                    },
-                    "404": {
-                        "description": "Resource not found."
-                    }
-                }
-            }
-        },
         "/api/v1/admin": {
             "get": {
                 "tags": [
@@ -1620,7 +1636,7 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Data Admin",
+                "summary": "Input Data Admin",
                 "consumes": [
                     "application/json"
                 ],
@@ -1663,7 +1679,7 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Retrieves the collection of Admin resources.",
+                "summary": "Retrieves the Admin Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -1700,7 +1716,7 @@
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Data Admin",
+                "summary": "Update Data Admin",
                 "consumes": [
                     "application/json"
                 ],
@@ -1814,7 +1830,7 @@
                 "tags": [
                     "KHS"
                 ],
-                "summary": "Data KHS",
+                "summary": "Input Data KHS",
                 "consumes": [
                     "application/json"
                 ],
@@ -1857,7 +1873,7 @@
                 "tags": [
                     "KHS"
                 ],
-                "summary": "Retrieves the collection of KHS resources.",
+                "summary": "Retrieves the KHS Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -1894,7 +1910,7 @@
                 "tags": [
                     "KHS"
                 ],
-                "summary": "Data KHS",
+                "summary": "Update Data KHS",
                 "consumes": [
                     "application/json"
                 ],
@@ -2008,7 +2024,7 @@
                 "tags": [
                     "KRS"
                 ],
-                "summary": "Data KRS",
+                "summary": "Input Data KRS",
                 "consumes": [
                     "application/json"
                 ],
@@ -2051,7 +2067,7 @@
                 "tags": [
                     "KRS"
                 ],
-                "summary": "Retrieves the collection of KRS resources.",
+                "summary": "Retrieves the KRS Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -2088,7 +2104,7 @@
                 "tags": [
                     "KRS"
                 ],
-                "summary": "Data KRS",
+                "summary": "Update Data KRS",
                 "consumes": [
                     "application/json"
                 ],
@@ -2197,14 +2213,12 @@
                         "description": "Unauthorized action."
                     }
                 }
-            }
-        },
-        "/api/nilai": {
+            },
             "post": {
                 "tags": [
                     "Nilai"
                 ],
-                "summary": "Data Nilai",
+                "summary": "Input Data Nilai",
                 "consumes": [
                     "application/json"
                 ],
@@ -2247,7 +2261,7 @@
                 "tags": [
                     "Nilai"
                 ],
-                "summary": "Retrieves the collection of Nilai resources.",
+                "summary": "Retrieves the Nilai Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -2284,7 +2298,7 @@
                 "tags": [
                     "Nilai"
                 ],
-                "summary": "Data Nilai",
+                "summary": "Update Data Nilai",
                 "consumes": [
                     "application/json"
                 ],
@@ -2400,7 +2414,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "Data User",
+                "summary": "Input Data User",
                 "consumes": [
                     "application/json"
                 ],
@@ -2443,7 +2457,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "Retrieves the collection of User resources.",
+                "summary": "Retrieves the User Data by ID.",
                 "produces": [
                     "application/json"
                 ],
@@ -2480,7 +2494,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "Data User",
+                "summary": "Update Data User",
                 "consumes": [
                     "application/json"
                 ],
@@ -2605,6 +2619,12 @@
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                },
+                "id_level": {
+                    "type": "string"
+                },
+                "profile_id": {
                     "type": "string"
                 },
                 "created_at": {

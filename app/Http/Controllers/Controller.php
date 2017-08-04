@@ -12,13 +12,13 @@ use Auth;
 /**
 * @SWG\Swagger(
 *	basePath="",
-*	host="webservice.app",
+*	host="127.0.0.1:8000",
 * 	schemes={"http"},
 *	@SWG\Info(
 *		version="1.0",
 *		title="Sample API",
 *		@SWG\Contact(
-*			name="Erik Alexander, Friscilia Sutanto, Sri Wardani",
+*			name="Eric Alexander, Friscilia Sutanto, Sri Wardani",
 *			url="https://uph.edu"
 *		),
 *	),

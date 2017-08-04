@@ -26,10 +26,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
      *          type="string"
      *      ),
      *      @SWG\Property(
+     *          property="id_level",
+     *          type="string"
+     *      ),
+     *      @SWG\Property(
+     *          property="profile_id",
+     *          type="string"
+     *      ),
+     *      @SWG\Property(
      *          property="created_at",
      *          type="string"
      *      ),
-      *     @SWG\Property(
+    *     @SWG\Property(
      *          property="update_at",
      *          type="string"
      *      ),
@@ -47,7 +55,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','id_level'
+        'name', 'email', 'password','id_level','profile_id'
     ];
 
     /**
@@ -69,5 +77,11 @@ class User extends Authenticatable
         else {
             return $this->hasOne('App\mahasiswa');
         }
+    }
+    public function jadwal(){
+        return $this->hasMany('App\jdwl');
+    }
+    public function nilai(){
+        return $this->hasMany('App\nilai');
     }
 }

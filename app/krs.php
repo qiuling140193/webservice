@@ -34,4 +34,4 @@ class krs extends Model
         'nim','id_matkul'
         ];
 }
-}
+
